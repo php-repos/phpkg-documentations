@@ -9,7 +9,7 @@ You can use the `watch` command to do it for you.
 In your terminal run this command:
 
 ```shell
-saeghe --command=watch
+saeghe watch
 ```
 
 That's it. Now you can start developing your application and your changes will be built while you are developing.

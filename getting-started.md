@@ -28,14 +28,14 @@ Using Saeghe is very easy. First, make your application's directory and change y
 mkdir my-application && cd my-application
 ```
 
-Next run Saeghe initialize command to create the required files and directories:
+Next run Saeghe `init` command to create the required files and directories:
 
 ```shell
-saeghe --command=initialize
+saeghe init
 ```
 
 > **Note**  
-> For more information about initialize command, check its [documentation](http://saeghe.com/documentations/initialize-command).
+> For more information about init command, check its [documentation](http://saeghe.com/documentations/init-command).
 
 Now you will see two added directories, `builds` and `Packages`.
 Saeghe will use the `Packages` directory to keep your added package’s source files.
@@ -95,7 +95,7 @@ For adding any packages to your application you can use the `add` command.
 For example, if you want to use `test-runner` package, you can simply copy its URL from github and run the following command:
 
 ```shell
-saegh --command=add --package=https://github.com/saeghe/test-runner.git
+saegh add --package=https://github.com/saeghe/test-runner.git
 ```
 
 After running this command, there will be three changes in your application:
@@ -143,7 +143,7 @@ When you are ready to run and test your application, you need to build your file
 For doing this, you should run:
 
 ```shell
-saeghe --command=build
+saeghe build
 ```
 
 By running this command, Saeghe will make a `development` directory under your `builds` directory and then starts to build your application into it.
@@ -229,7 +229,7 @@ When your application has been ready, you can build the application for the prod
 You can use the `build` command like the following:
 
 ```shell
-saeghe --command=build --environment=production
+saeghe build --environment=production
 ```
 
 This command will make a `production` directory under your `builds` directory and builds your application into it.

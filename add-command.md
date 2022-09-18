@@ -16,13 +16,13 @@ Pathes can be https path or SSH path to the package.
 For https path use:
 
 ```shell
-saeghe --command=add --package=https://github.com/{owner}/{repo}.git
+saeghe add --package=https://github.com/{owner}/{repo}.git
 ```
 
 For SSH path use:
 
 ```shell
-saeghe --command=add --package=git@github.com:{owner}/{repo}.git
+saeghe add --package=git@github.com:{owner}/{repo}.git
 ```
 
 You can simply add any package to your application using this single command. 
@@ -32,7 +32,7 @@ By default, Saeghe will check the given package to see if there are any releases
 If it finds releases, it downloads the latest release of the package for your application, unless you specify the version tag that you want.
 
 ```shell
-saeghe --command=add --package=https://github.com/{owner}/{repo}.git --version={tag-name}
+saeghe add --package=https://github.com/{owner}/{repo}.git --version={tag-name}
 ```
 
 In this case, Saeghe will add the same version of the package to your application.
@@ -53,7 +53,7 @@ Let's say we need to install the `test-runner` package to our application. The o
 You only need to run:
 
 ```shell
-saeghe --command=add --package=https://github.com/saeghe/test-runner
+saeghe add --package=https://github.com/saeghe/test-runner
 ```
 And it will copy the package to `Packages/saeghe/test-runner` on your project directory.
 

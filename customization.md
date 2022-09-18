@@ -1,11 +1,11 @@
 ## Introduction
 
-As part of the [initialize command](https://saeghe.com/documentations/initialize-command), 
+As part of the [init command](https://saeghe.com/documentations/init-command), 
 Saeghe will create a `saeghe.config.json` file for your application. You can find any configurable option on that file here.
 
 ## What is included?
 
-After running `initialize` command, you should see a `saeghe.config.json` file with the following content:
+After running `init` command, you should see a `saeghe.config.json` file with the following content:
 
 ```json
 {

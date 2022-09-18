@@ -14,7 +14,7 @@ Then Saeghe will resolve and add them for you, either they are on your applicati
 By running the following command, you can build your application for the `development` environment:
 
 ```shell
-saeghe --command=build
+saeghe build
 ```
 
 After running this command, you will have a clone of your application under `builds/development` directory.
@@ -26,7 +26,7 @@ When you run the build command, Saeghe uses your `saeghe.config.json` file and b
 You can also build your application for the production environment like so:
 
 ```shell
-saeghe --command=build --environment=production
+saeghe build --environment=production
 ```
 
 By running this command, you will see a built copy of your application in `builds/production` directory.

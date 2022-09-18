@@ -10,7 +10,7 @@ As you can guess, there is a simple command that you need to run to install all 
 Saeghe will use your `saeghe.config-lock.json` file, to install all used packages in your application and their packages. Run:
 
 ```shell
-saeghe --command=install
+saeghe install
 ```
 
 And you will see the same copy of the used packages in your packages directory.

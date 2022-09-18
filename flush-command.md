@@ -10,7 +10,7 @@ You may wish to clear these directories entirely. You can use the `flush` comman
 Inside your application, run this command:
 
 ```shell
-saeghe --command=flush
+saeghe flush
 ```
 
 Now if you check the environment build directory ([check build documentation](https://saeghe.com/documentations/build-command)) 

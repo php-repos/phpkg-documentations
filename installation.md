@@ -8,6 +8,10 @@ so you can get access to Saeghe from any path and use it as all your project's p
 > These installations work on Unix/Linux and MacOS systems. 
 > Support for windows will be added soon.
 
+## Requirements
+
+Make sure you have `unzip` installed on your operating system.
+
 ## Use Installer
 
 Using the installer will be the easiest method to install Saeghe. 

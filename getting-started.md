@@ -234,3 +234,6 @@ saeghe build --environment=production
 
 This command will make a `production` directory under your `builds` directory and builds your application into it.
 
+> **Note**  
+> For more information about `build`, please check [build documentations](https://saeghe.com/documentations/build-command).
+

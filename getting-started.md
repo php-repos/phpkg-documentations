@@ -3,6 +3,17 @@
 Saeghe is a modern PHP package manager. You can simply use it to manage your package dependencies and your codebase.
 Saeghe finds your required PHP files, from your codebase or your application's dependencies, and adds them to your code.
 
+### Improve performance
+
+Saeghe helps you to improve your application's performance.
+It is not going to use any autoloading, instead, it is going to inject the `require` statements for
+your files directly into PHP files. It is much faster than autoloading the classes.
+
+You can see the benchmark table on [saegh benchmark repository](https://github.com/saeghe/benchmark)
+
+Also, you can clone the benchmark repository and play with it by yourself.
+Follow the `README` instruction on the benchmark repository.
+
 ## Requirements
 
 For installing Saeghe, you need to have git installed on your machine as well as PHP version >= 8.0
@@ -68,7 +79,7 @@ The `saeghe.config-lock.json` file will be used for keeping metadata about added
 
 ### Add your application's map
 
-Next step is to define your map.
+The next step is to define your map.
 Assume you want to keep your application files in the `src` directory and have a `tests` directory to add your tests into it.
 You need to define your map configuration inside the `saeghe.config.json` file as follows:
 ```json
@@ -92,7 +103,7 @@ We are going to explain more about mapping in examples.
 ### Adding packages
 
 For adding any packages to your application you can use the `add` command.
-For example, if you want to use `test-runner` package, you can simply copy its URL from github and run the following command:
+For example, if you want to use the `test-runner` package, you can simply copy its URL from GitHub and run the following command:
 
 ```shell
 saegh add --package=https://github.com/saeghe/test-runner.git
@@ -153,7 +164,7 @@ By running this command, Saeghe will make a `development` directory under your `
 
 For example, assume you have two PHP files in your application.
 
-First, a controller file under `src` directory named `MyController.php` with contents as:
+First, a controller file under the `src` directory named `MyController.php` with contents as:
 
 ```php
 <?php
@@ -168,7 +179,7 @@ class MyController
 }
 
 ```
-And another `User.php` file in `src\Models` directory:
+And another `User.php` file in the `src\Models` directory:
 
 ```php
 <?php
@@ -239,8 +250,8 @@ This command will make a `production` directory under your `builds` directory an
 
 ## Migrate from composer
 
-If you have a package or application that uses composer as the package manager, 
-you can use following command to migrate from composer to Saeghe:
+If you have a package or application that uses composer as the package manager,
+you can use the following command to migrate from composer to Saeghe:
 
 ```shell
 saeghe migrate
@@ -248,4 +259,3 @@ saeghe migrate
 
 > **Note**  
 > For more information about migration, please check [migrate documentations](https://saeghe.com/documentations/migrate-command).
-

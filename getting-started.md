@@ -237,3 +237,15 @@ This command will make a `production` directory under your `builds` directory an
 > **Note**  
 > For more information about `build`, please check [build documentations](https://saeghe.com/documentations/build-command).
 
+## Migrate from composer
+
+If you have a package or application that uses composer as the package manager, 
+you can use following command to migrate from composer to Saeghe:
+
+```shell
+saeghe migrate
+```
+
+> **Note**  
+> For more information about migration, please check [migrate documentations](https://saeghe.com/documentations/migrate-command).
+

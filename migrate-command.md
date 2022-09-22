@@ -19,7 +19,7 @@ After that, you can simply run `build` command.
 
 > **Note**  
 > For migration you need to have your `vendor` directory installed from the composer.
->
-> > **Note**  
+
+> **Note**  
 > The `migrate` command will not guarantee to migrate everything properly yet.
 > There might be required for you to add some `use` statements in used classes.

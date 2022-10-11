@@ -9,11 +9,6 @@ Saeghe helps you to improve your application's performance.
 It is not going to use any autoloading, instead, it is going to inject the `require` statements for
 your files directly into PHP files. It is much faster than autoloading the classes.
 
-You can see the benchmark table on [saegh benchmark repository](https://github.com/saeghe/benchmark)
-
-Also, you can clone the benchmark repository and play with it by yourself.
-Follow the `README` instruction on the benchmark repository.
-
 ## Requirements
 
 For installing Saeghe, you need to have git installed on your machine as well as PHP version >= 8.0

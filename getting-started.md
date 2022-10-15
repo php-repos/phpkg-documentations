@@ -101,7 +101,7 @@ For adding any packages to your application you can use the `add` command.
 For example, if you want to use the `test-runner` package, you can simply copy its URL from GitHub and run the following command:
 
 ```shell
-saegh add --package=https://github.com/saeghe/test-runner.git
+saegh add https://github.com/saeghe/test-runner.git
 ```
 
 After running this command, there will be three changes in your application:

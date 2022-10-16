@@ -1,13 +1,14 @@
 ## Introduction
 
-Saeghe is a modern PHP package manager. You can simply use it to manage your package dependencies and your codebase.
-Saeghe finds your required PHP files, from your codebase or your application's dependencies, and adds them to your code.
-This way you can take advantage of both, `functional` and `oop` programming.
-Saeghe works with git directly, it means you don't need any intermediate repository registration.
+Saeghe is a modern PHP package manager. You can simply manage your package dependencies and your codebase.
+Saeghe detects your required PHP files from your codebase and your application's dependencies.
+Then adds them to your code.
+This way you can take advantage of both; `Functional` and `OOP` programming.
+Saeghe works with git directly. It means there is no need for any intermediate repository registration.
 
 ## Requirements
 
-For installing Saeghe, you need to have git installed on your machine as well as PHP version >= 8.0 
+For installing Saeghe, you need to have git installed on your machine as well as PHP version >= 8.0
 with `php-mbstring` and `php-zip` extensions.
 
 ## Installation
@@ -43,7 +44,7 @@ saeghe init
 
 Now you will see two added directories, `builds` and `Packages`.
 Saeghe will use the `Packages` directory to keep your added package’s source files.
-The `builds` directory will be used by Saeghe when you run the `build` command that we will explain later.
+The `builds` directory will be used by Saeghe when you run the `build` command we will explain later.
 
 Also, you will see two new files added to your application.
 `Saeghe.config.json` and `saeghe.config-lock.json`.
@@ -63,19 +64,19 @@ The default content for this file should be:
 ```
 
 > **Note**  
-> For more information about configurations, 
+> For more information about configurations,
 > please check [customization documentation](http://saeghe.com/documentations/customization).
 
 The `saeghe.config-lock.json` file will be used for keeping metadata about added packages.
 
 > **Note**  
-> For more information about adding packages, 
+> For more information about adding packages,
 > please check [add command documentation](http://saeghe.com/documentations/add-command).
 
 ### Add your application's map
 
 The next step is to define your map.
-Assume you want to keep your application files in the `src` directory 
+Assume you want to keep your application files in the `src` directory
 and have a `tests` directory to add your tests into it.
 You need to define your map configuration inside the `saeghe.config.json` file as follows:
 
@@ -93,7 +94,7 @@ You need to define your map configuration inside the `saeghe.config.json` file a
 }
 ```
 
-By this configuration, you tell Saeghe, to map any used namespace starting with `Application` to `src` directory
+By this configuration, you tell Saeghe, to map any used namespace starting with `Application` to the `src` directory
 and any used namespaces starting with `Tests` to your `tests` directory.
 
 We are going to explain more about mapping in examples.
@@ -101,14 +102,14 @@ We are going to explain more about mapping in examples.
 ### Adding packages
 
 For adding any packages to your application you can use the `add` command.
-For example, if you want to use the `test-runner` package, 
+For example, if you want to use the `test-runner` package,
 you can simply copy its URL from GitHub and run the following command:
 
 ```shell
 saeghe add https://github.com/saeghe/test-runner.git
 ```
 
-As you see, there is no intermediate repository website for packages, you can directly use their git url.
+As you see, there is no intermediate repository website for packages, you can directly use their git URL.
 
 After running this command, there will be three changes in your application:
 - Test runner source code will be added under the `Packages` directory.
@@ -133,7 +134,7 @@ So far, if you did similar steps, your `saeghe.config.json` file should be like 
 }
 ```
 
-And your `saeghe.config-lock.json` file should be something like:
+And your `saeghe.config-lock.json` file should be something like this:
 
 ```json
 {
@@ -147,16 +148,17 @@ And your `saeghe.config-lock.json` file should be something like:
     }
 }
 ```
+
 > **Note**  
-> For more information about adding packages and versioning, 
+> For more information about adding packages and versioning,
 > please check [add command documentation](http://saeghe.com/documentations/add-command).
 
 ### Add your entry points
 
-Saeghe will automatically add required codes for autoload used classes in your entry points.
-For example, let's say your entry point is in `public/index.php` file.
-Then by adding this file to the entry points config in the `saeghe.config.json` file, 
-you tell saeghe to add required map and code for autoload to these files.
+Saeghe will automatically add the required codes for autoloading used classes in your entry points.
+For example, let's say your entry point is in the `public/index.php` file.
+Then by adding this file to the entry points config in the `saeghe.config.json` file,
+you tell Saeghe to add the required map and code for autoloading to these files.
 
 ```json
 {
@@ -183,11 +185,11 @@ For doing this, you should run:
 saeghe build
 ```
 
-By running this command, Saeghe will make a `development` directory 
+By running this command, Saeghe will make a `development` directory
 under your `builds` directory and then starts to build your application into it.
 
 > **Note**  
-> For more information about the build command, 
+> For more information about the build command,
 > please check [build command documentation](http://saeghe.com/documentations/build-command).
 
 For example, assume you have two PHP files in your application.
@@ -260,17 +262,17 @@ class User
 
 There are no changes for the `User.php` file since there are no use statements in this file.
 
-Required map for autoload used classes also has been added to `build/development/public/index.php` file.
+The required map for autoloading used classes also has been added to the `build/development/public/index.php` file.
 
 Use can use the `build` command, to build files containing any kind of use statement.
 
 > **Note**  
-> For more information about use statements, 
+> For more information about use statements,
 > please check [PHP use statements](https://www.php.net/manual/en/language.namespaces.importing.php).
 
 ### Developing
 
-While you are developing your application, 
+While you are developing your application,
 you are going to constantly add and remove files to your project and test the application.
 Running the `build` command for each change and test is not optimal.
 
@@ -281,8 +283,8 @@ saeghe watch
 ```
 
 > **Note**  
-> For more information about `watch`, 
-> please check [watch documentations](https://saeghe.com/documentations/watch-command).
+> For more information about `watch`,
+> please check [watch documentation](https://saeghe.com/documentations/watch-command).
 
 ### Build for production
 
@@ -297,7 +299,7 @@ This command will make a `production` directory under your `builds` directory an
 
 > **Note**  
 > For more information about `build`,
-> please check [build documentations](https://saeghe.com/documentations/build-command).
+> please check [build documentation](https://saeghe.com/documentations/build-command).
 
 ## Migrate from composer
 
@@ -309,5 +311,5 @@ saeghe migrate
 ```
 
 > **Note**  
-> For more information about migration, 
-> please check [migrate documentations](https://saeghe.com/documentations/migrate-command).
+> For more information about migration,
+> please check [migrate documentation](https://saeghe.com/documentations/migrate-command).

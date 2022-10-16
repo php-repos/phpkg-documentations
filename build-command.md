@@ -1,6 +1,6 @@
 ## Introduction
 
-As you know, we need to import used PHP files using one of 
+As you know, we need to import used PHP files using one of
 [`require`](https://www.php.net/manual/en/function.require.php),
 [`include`](https://www.php.net/manual/en/function.include.php),
 [`require_once`](https://www.php.net/manual/en/function.require-once.php) and
@@ -18,13 +18,13 @@ By running the following command, you can build your application for the `develo
 saeghe build
 ```
 
-After running this command, you will have a clone of your application under `builds/development` directory.
-When you run the build command, Saeghe uses your `saeghe.config.json` file 
-and builds your application based on defined configs on this file.
+After running this command, you will have a clone of your application under the `builds/development` directory.
+When you run the build command, Saeghe uses your `saeghe.config.json` file
+and builds your application based on the defined configs on this file.
 
 > **Note**  
-> Please read [configuration documentation](https://saeghe.com/documentations/customization) 
-> to learn how you can customize you’re builds.
+> Please read [configuration documentation](https://saeghe.com/documentations/customization)
+> to learn how you can customize it.
 
 You can also build your application for the production environment like so:
 
@@ -32,7 +32,7 @@ You can also build your application for the production environment like so:
 saeghe build production
 ```
 
-By running this command, you will see a built copy of your application in `builds/production` directory.
+By running this command, you will see a built copy of your application in the `builds/production` directory.
 
 ## What build means?
 
@@ -57,7 +57,7 @@ class ClassBar extends ClassFoo
 
 ```
 
-When you build your application, you are going to have a built copy of your file in the build environment like:
+When you build your application, you are going to have a built copy of your file in the built environment like:
 
 ```php
 <?php
@@ -104,7 +104,7 @@ class ClassBar extends ClassFoo
 
 ```
 
-By having the same configuration as the previous example, 
+By having the same configuration as the previous example,
 When you build your project, you can expect the following file:
 
 ```php
@@ -137,6 +137,7 @@ class ClassBar extends ClassFoo
 
 ```
 
-And map for used classes has been added to the `public/index.php`.
+And the map for used classes has been added to the `public/index.php`.
 
-You can take advantage from both, `functional` and `oop` programming without thinking about files. 
+You can take advantage of both, `Functional` and `OOP` programming without thinking about files. 
+

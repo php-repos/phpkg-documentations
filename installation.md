@@ -10,7 +10,8 @@ so you can get access to Saeghe from any path and use it as all your project's p
 
 ## Requirements
 
-Make sure you have `unzip` installed on your operating system.
+For installing Saeghe, you need to have git installed on your machine as well as PHP version >= 8.0
+with `php-mbstring` and `php-zip` extensions.
 
 ## Use Installer
 

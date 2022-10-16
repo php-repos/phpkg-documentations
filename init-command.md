@@ -15,11 +15,14 @@ This command will create the required files and directories:
 - It creates a `saeghe.config.json` file
 - It creates a `saeghe.config-lock.json` file
 - It creates a directory for storing packages source code in it, by default the name is `Packages`
-- It created a `builds` directory for keeping builds files and directories ([see build command documentation](https://saeghe.com/documentations/build-command))
+- It created a `builds` directory for keeping builds files and directories 
+([see build command documentation](https://saeghe.com/documentations/build-command))
 
-As mentioned before, you can do all of these steps by yourself, however, running the command will be a much faster approach.
+As mentioned before, you can do all of these steps by yourself, however, 
+running the command will be a much faster approach.
 
-If you want to use other directories than `Packages` for keeping added packages, you can call the `init` command with `packages-directory` argument:
+If you want to use other directories than `Packages` for keeping added packages, 
+you can call the `init` command with `packages-directory` argument:
 
 ```shell
 saeghe init --packages-directory=vendor

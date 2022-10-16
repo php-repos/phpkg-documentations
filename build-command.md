@@ -1,6 +1,7 @@
 ## Introduction
 
-As you know, we need to import used PHP files using one of [`require`](https://www.php.net/manual/en/function.require.php),
+As you know, we need to import used PHP files using one of 
+[`require`](https://www.php.net/manual/en/function.require.php),
 [`include`](https://www.php.net/manual/en/function.include.php),
 [`require_once`](https://www.php.net/manual/en/function.require-once.php) and
 [`include_once`](https://www.php.net/manual/en/function.include-once.php) expressions.
@@ -18,27 +19,25 @@ saeghe build
 ```
 
 After running this command, you will have a clone of your application under `builds/development` directory.
-When you run the build command, Saeghe uses your `saeghe.config.json` file and builds your application based on defined configs on this file.
+When you run the build command, Saeghe uses your `saeghe.config.json` file 
+and builds your application based on defined configs on this file.
 
 > **Note**  
-> Please read [configuration documentation](https://saeghe.com/documentations/customization) to customize you’re builds.
+> Please read [configuration documentation](https://saeghe.com/documentations/customization) 
+> to learn how you can customize you’re builds.
 
 You can also build your application for the production environment like so:
 
 ```shell
-saeghe build --environment=production
+saeghe build production
 ```
 
 By running this command, you will see a built copy of your application in `builds/production` directory.
 
-> **Note**  
-> Currently, except build environment directory, there is no difference between `development` and `production` build.
-> But soon there will come many cool features and boosts for your production code.
-
 ## What build means?
 
 Let's say you have an application under `/var/www`.
-Assume you defined a map as `"Application": "src"`
+Assume you defined a map as `"Application": "src"` and you defined your entry point to be at `public/index.php`
 Consider the following code in your application:
 
 ```php
@@ -48,6 +47,8 @@ namespace Application;
 
 use Application\SubDomain\ClassFoo;
 use Exception;
+use function Application\Str\between;
+use const Application\Constants\CONSTANT_A;
 
 class ClassBar extends ClassFoo
 {
@@ -63,7 +64,8 @@ When you build your application, you are going to have a built copy of your file
 
 namespace Application;
 
-require_once '/var/www/src/SubDomain/ClassFoo.php';
+require_once '/var/www/src/Constants.php';
+require_once '/var/www/src/Str.php';
 
 use Application\SubDomain\ClassFoo;
 use Exception;
@@ -74,6 +76,8 @@ class ClassBar extends ClassFoo
 }
 
 ```
+
+And you will see a map added to your `public/index.php` that tells to PHP how to find the `ClassFoo`.
 
 Now let's make it more complicated. Consider this code:
 
@@ -100,25 +104,20 @@ class ClassBar extends ClassFoo
 
 ```
 
-By having the same configuration as the previous example, When you build your project, you can expect the following file:
+By having the same configuration as the previous example, 
+When you build your project, you can expect the following file:
 
 ```php
 <?php
 
 namespace Applicaiton\SubDomain;
 
-require_once '/var/www/src/SubDomain/ClassFoo.php';
-require_once '/var/www/src/AnotherNamespace/ClassBaz.php';
-require_once '/var/www/src/SampleFile.php';
-require_once '/var/www/src/Helper.php';
+require_once '/var/www/Packages/owner-foo/package-foo/src/SubDirectory/Constants.php';
 require_once '/var/www/src/Constants.php';
 require_once '/var/www/src/OtherConstants.php';
-require_once '/var/www/Packages/owner-foo/package-foo/src/ClassInFoo.php';
-require_once '/var/www/Packages/owner-bar/package-bar/src/SubDirectory/ClassInBar.php';
-require_once '/var/www/Packages/owner-baz/package-baz/src/ClassInBaz.php';
-require_once '/var/www/Packages/owner-baz/package-baz/src/AnotherClassInBaz.php';
 require_once '/var/www/Packages/owner-foo/package-foo/src/SubDirectory/Helper.php';
-require_once '/var/www/Packages/owner-foo/package-foo/src/SubDirectory/Constants.php';
+require_once '/var/www/src/SampleFile.php';
+require_once '/var/www/src/Helper.php';
 
 use Application\SubDomain\ClassFoo;
 use Application\AnotherNamespace\ClassBaz as Baz;
@@ -138,6 +137,6 @@ class ClassBar extends ClassFoo
 
 ```
 
-As you guess, there is no more need for autoloading!
-It increases the probability of using PHP's opcache and JIT in your application.
-There are a lot of cool features that you can add to the build process.
+And map for used classes has been added to the `public/index.php`.
+
+You can take advantage from both, `functional` and `oop` programming without thinking about files. 

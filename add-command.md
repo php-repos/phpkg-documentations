@@ -4,14 +4,15 @@ You can use the `add` command to add a git repository to your application as a p
 
 As a package user, simply search online, and as soon as you reach the git repo, you can add it.
 
-As a package developer, there is no need to register your package in other places. Your package is ready to use as soon as you push it to the git.
+As a package developer, there is no need to register your package in other places. 
+Your package is ready to use as soon as you push it to the git.
 
 ## Usage
 
-Adding a package to your application using Saeghe add command is very easy. 
+Adding a package to your application using Saeghe `add` command is very easy. 
 You only need to provide a path to your desired package and Saeghe adds that package to your application.
 
-Pathes can be https path or SSH path to the package.
+Path can be https path or SSH path to the package.
 
 For https path use:
 
@@ -28,8 +29,9 @@ saeghe add git@github.com:{owner}/{repo}.git
 You can simply add any package to your application using this single command. 
 Remember to replace `{owner}` and `{repo}` with your desired package owner and repo name.
 
-By default, Saeghe will check the given package to see if there are any releases for the package. 
-If it finds releases, it downloads the latest release of the package for your application, unless you specify the version tag that you want.
+By default, Saeghe will check the given package's repository to see if there are any releases for the package. 
+If it finds releases, it downloads the latest release of the package for your application, 
+unless you specify the version tag that you wish to install.
 
 ```shell
 saeghe add https://github.com/{owner}/{repo}.git --version={tag-name}
@@ -45,17 +47,19 @@ Cloning the package also happens when there is no release for the package.
 > If you are adding a private package, you will need a token for cloning or downloading the package. 
 > You must add your access token in the `.credential` file under the saeghe installation directory.
 > 
-> For more information about generating the personal access token, please read [this documentation](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token).
+> For more information about generating the personal access token, 
+> please read [this documentation](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token).
 
 ## Example
 
-Let's say we need to install the `test-runner` package to our application. The owner of this package is `saeghe` and the repo is `test-runner`.
+Let's say you need to install the `test-runner` package to our application. 
+The owner of this package is `saeghe` and the repo is `test-runner`.
 You only need to run:
 
 ```shell
 saeghe add https://github.com/saeghe/test-runner
 ```
-And it will copy the package to `Packages/saeghe/test-runner` on your project directory.
+And it will install the package to `Packages/saeghe/test-runner` on your project directory.
 
 You will see the package in your `saeghe.config.json` file under the `packages` section:
 

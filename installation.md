@@ -39,3 +39,12 @@ You can manually install Saeghe by following these steps:
 - Add path to Saeghe source directory into your `$PATH`
 - To make sure everything is installed correctly, run `saeghe --help` and you should see the help.
 
+## Add GitHub token
+
+Either way, you need to have a GitHub access token. Saeghe needs the GitHub token to read repositories.
+You can generate a token by following this [link](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token).
+Then you can use the following command to add it to Saeghe:
+
+```shell
+saeghe credential github.com {your-github-token}
+```

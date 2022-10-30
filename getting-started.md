@@ -21,6 +21,16 @@ sh -c "$(curl -fsSL https://raw.github.com/saeghe/installation/master/install.sh
 
 By running this command, Saeghe will be installed on your home directory.
 
+## Add GitHub token
+
+Saeghe needs a GitHub token to get read repositories. 
+You can generate a token by following this [link](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token). 
+Then you can use the following command to add it to Saeghe:
+
+```shell
+saeghe credential github.com {your-github-token}
+```
+
 Now Saeghe is ready to use.
 
 ## Usage

@@ -19,7 +19,7 @@ Using the installer will be the easiest method to install Saeghe.
 You can simply run the following line, and you should have it ready to use:
 
 ```shell
-sh -c "$(curl -fsSL https://raw.github.com/saeghe/installation/master/install.sh)"
+bash -c "$(curl -fsSL https://raw.github.com/saeghe/installation/master/install.sh)"
 ```
 
 This command is going to make a `.saeghe` directory in your home directory and,

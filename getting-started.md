@@ -16,7 +16,7 @@ with `php-mbstring` and `php-zip` extensions.
 You can simply install Saeghe by running the following command in your terminal:
 
 ```shell
-sh -c "$(curl -fsSL https://raw.github.com/saeghe/installation/master/install.sh)"
+bash -c "$(curl -fsSL https://raw.github.com/saeghe/installation/master/install.sh)"
 ```
 
 By running this command, Saeghe will be installed on your home directory.

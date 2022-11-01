@@ -9,7 +9,7 @@ Saeghe works with git directly. It means there is no need for any intermediate r
 ## Requirements
 
 For installing Saeghe, you need to have git installed on your machine as well as PHP version >= 8.0
-with `php-mbstring` and `php-zip` extensions.
+with `php-mbstring`, `php-zip` and `php-curl` extensions.
 
 ## Installation
 

@@ -1,7 +1,7 @@
 ## Introduction
 
 As part of the [init command](https://saeghe.com/documentations/init-command),
-Saeghe will create a `saeghe.config.json` file for your application.
+Saeghe creates a `saeghe.config.json` file for your application.
 You can find any configurable option on that file here.
 
 ## What is included?
@@ -47,7 +47,7 @@ you want to use the `Tests` namespace to point to the `tests` directory. Then yo
 }
 ```
 
-You can have as many as you need to map and Saeghe will make sure to resolve all of them in your application.
+You can have as many as you need to map, and it makes sure to resolve all of them in your application.
 
 ### Config entry-points
 
@@ -66,15 +66,15 @@ in this case, you need to define entry points as follows:
 }
 ```
 
-Saeghe will add require maps for autoloading objects in these files.
+The required autoload using class maps for classes gets added in these files.
 
 ### Config excludes
 
-Normally, Saeghe will try to build all files in all directories in your application.
+Normally, all files in all directories in your application gets built.
 Sometimes you don't need to have some files or directories in your build directory.
 For example, let's say your application contains a `node_modules` directory
 and a bash file like `make.sh` that you don't need in your project runtime.
-Now you can add these two items into the `excludes` parameter and Saeghe will ignore them
+Now you can add these two items into the `excludes` parameter and the `build` command ignores them, 
 and you won't see them in the final built directory.
 You need to add the following:
 
@@ -105,7 +105,7 @@ you need to have the following configuration:
 ```
 Having this configuration ends up seeing a `rocket-check-runner` file from the main application
 linked to the `check-runner.php` file inside the package directory.
-Saeghe automatically will add the required code for autoloading used classes to your executables files.
+The required code for autoloading used classes gets added automatically to your executables files.
 
 ### Config packages-directory
 
@@ -122,5 +122,4 @@ You can simply use any directory name for this config:
 ### Config packages
 
 You don't have to do anything with this config.
-Saeghe will use this config to keep track of the required packages for your application.
-
+It gets used to keep track of the required packages for your application.

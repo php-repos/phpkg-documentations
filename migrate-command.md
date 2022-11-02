@@ -1,8 +1,7 @@
 ## Introduction
 
-You may already have an application or a package that uses Composer as the package manager
-and you want to use Saeghe instead.
-If you wish to use Saeghe for this case, you can use the `migrate` command.
+You may already have an application or a package that uses Composer as the package manager.
+If you wish to migrate, you can use the `migrate` command.
 
 ## Usage
 

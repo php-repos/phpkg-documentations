@@ -1,7 +1,7 @@
 ## Introduction
 
 It is a common use case that you sometimes need to remove an added package from your application.
-Removing a package from your application using Saeghe is also a very easy process.
+Removing a package from your application is also a very easy process.
 
 ## Usage
 

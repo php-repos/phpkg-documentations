@@ -8,7 +8,7 @@ As you know, we need to import used PHP files using one of
 This is a frustrating job to keep all imports in sync with file and directory changes.
 
 This is the place that Saeghe comes to solve for you. You can write your PHP code, without considering file locations.
-Then Saeghe will resolve and add them for you, either they are on your application or they come from another package.
+Then it resolve and add them for you, either they are on your application or they come from another package.
 
 ## Usage
 
@@ -19,7 +19,7 @@ saeghe build
 ```
 
 After running this command, you will have a clone of your application under the `builds/development` directory.
-When you run the build command, Saeghe uses your `saeghe.config.json` file
+When you run the build command, it uses your `saeghe.config.json` file
 and builds your application based on the defined configs on this file.
 
 > **Note**  

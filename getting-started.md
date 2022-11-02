@@ -1,15 +1,15 @@
 ## Introduction
 
 Saeghe is a modern PHP package manager. You can simply manage your package dependencies and your codebase.
-Saeghe detects your required PHP files from your codebase and your application's dependencies.
+It detects your required PHP files from your codebase and your application's dependencies.
 Then adds them to your code.
 This way you can take advantage of both; `Functional` and `OOP` programming.
-Saeghe works with git directly. It means there is no need for any intermediate repository registration.
+It works with git directly. It means there is no need for any intermediate repository registration.
 
 ## Requirements
 
-For installing Saeghe, you need to have git installed on your machine as well as PHP version >= 8.0
-with `php-mbstring`, `php-zip` and `php-curl` extensions.
+For installing it, you need to have git installed on your machine as well as PHP version >= 8.0
+with `php-mbstring`, `php-zip` and `php-curl` extensions installed.
 
 ## Installation
 
@@ -19,31 +19,31 @@ You can simply install Saeghe by running the following command in your terminal:
 bash -c "$(curl -fsSL https://raw.github.com/saeghe/installation/master/install.sh)"
 ```
 
-By running this command, Saeghe will be installed on your home directory.
+By running this command, it will be installed on your home directory.
 
 ## Add GitHub token
 
-Saeghe needs a GitHub token to read repositories. 
+A GitHub token is required to read repositories. 
 You can generate a token by following this [link](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token). 
-Then you can use the following command to add it to Saeghe:
+Then you can use the following command to add it to credentials:
 
 ```shell
 saeghe credential github.com {your-github-token}
 ```
 
-Now Saeghe is ready to use.
+Now it is ready to use.
 
 ## Usage
 
 ### Initialize your application
 
-Using Saeghe is very easy. First, make your application's directory and change your current directory to it:
+First, make your application's directory and change your current directory to it:
 
 ```shell
 mkdir my-application && cd my-application
 ```
 
-Next run Saeghe `init` command to create the required files and directories:
+Next run the `init` command to create the required files and directories:
 
 ```shell
 saeghe init
@@ -53,12 +53,12 @@ saeghe init
 > For more information about init command, check its [documentation](http://saeghe.com/documentations/init-command).
 
 Now you will see two added directories, `builds` and `Packages`.
-Saeghe will use the `Packages` directory to keep your added package’s source files.
-The `builds` directory will be used by Saeghe when you run the `build` command we will explain later.
+The `Packages` directory gets used to keep your added package’s source files.
+The `builds` directory will be used when you run the `build` command we will explain later.
 
 Also, you will see two new files added to your application.
-`Saeghe.config.json` and `saeghe.config-lock.json`.
-The `Saeghe.config.json` is for keeping your application's configuration.
+`saeghe.config.json` and `saeghe.config-lock.json`.
+The `saeghe.config.json` is for keeping your application's configuration.
 
 The default content for this file should be:
 
@@ -104,7 +104,7 @@ You need to define your map configuration inside the `saeghe.config.json` file a
 }
 ```
 
-By this configuration, you tell Saeghe, to map any used namespace starting with `Application` to the `src` directory
+By this configuration, it maps any used namespace starting with `Application` to the `src` directory
 and any used namespaces starting with `Tests` to your `tests` directory.
 
 We are going to explain more about mapping in examples.
@@ -165,10 +165,10 @@ And your `saeghe.config-lock.json` file should be something like this:
 
 ### Add your entry points
 
-Saeghe will automatically add the required codes for autoloading used classes in your entry points.
+The required code for autoloading used classes gets added automatically to your entry point files.
 For example, let's say your entry point is in the `public/index.php` file.
 Then by adding this file to the entry points config in the `saeghe.config.json` file,
-you tell Saeghe to add the required map and code for autoloading to these files.
+it adds the required map and code for autoloading to these files.
 
 ```json
 {
@@ -188,14 +188,14 @@ you tell Saeghe to add the required map and code for autoloading to these files.
 
 ### Build your code for the development
 
-When you are ready to run and test your application, you need to build your files using Saeghe's `build` command.
+When you are ready to run and test your application, you need to build your files using the `build` command.
 For doing this, you should run:
 
 ```shell
 saeghe build
 ```
 
-By running this command, Saeghe will make a `development` directory
+By running this command, it makes a `development` directory
 under your `builds` directory and then starts to build your application into it.
 
 > **Note**  
@@ -286,7 +286,7 @@ While you are developing your application,
 you are going to constantly add and remove files to your project and test the application.
 Running the `build` command for each change and test is not optimal.
 
-Saeghe has a `watch` command that you can run:
+There is a `watch` command that you can run:
 
 ```shell
 saeghe watch
@@ -314,7 +314,7 @@ This command will make a `production` directory under your `builds` directory an
 ## Migrate from composer
 
 If you have a package or application that uses composer as the package manager,
-you can use the following command to migrate from composer to Saeghe:
+you can use the following command to migrate from composer:
 
 ```shell
 saeghe migrate

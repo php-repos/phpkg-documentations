@@ -9,8 +9,8 @@ Your package is ready to use as soon as you push it to the git.
 
 ## Usage
 
-Adding a package to your application using Saeghe `add` command is very easy.
-You only need to provide a path to your desired package and Saeghe adds that package to your application.
+Adding a package to your application using the `add` command is very easy.
+You only need to provide a path to your desired package, and it adds that package to your application.
 
 The path can be an HTTPS path or SSH path to the package.
 
@@ -29,7 +29,7 @@ saeghe add git@github.com:{owner}/{repo}.git
 You can simply add any package to your application using this single command.
 Remember to replace `{owner}` and `{repo}` with your desired package owner and repo name.
 
-By default, Saeghe will check the given package's repository to see if there are any releases for the package.
+By default, it checks the given package's repository to see if there are any releases for the package.
 If it finds releases, it downloads the latest release of the package for your application,
 unless you specify the version tag that you wish to install.
 
@@ -37,10 +37,10 @@ unless you specify the version tag that you wish to install.
 saeghe add https://github.com/{owner}/{repo}.git --version={tag-name}
 ```
 
-In this case, Saeghe will add the same version of the package to your application.
+In this case, it adds the same version of the package to your application.
 
 However, sometimes you may need a development version of a package.
-In this case, you can specify `development` as the version tag, and Saeghe clones the package for your application.
+In this case, you can specify `development` as the version tag, and it clones the package for your application.
 Cloning the package also happens when there is no release for the package.
 
 > **Note**  

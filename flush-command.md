@@ -1,7 +1,6 @@
 ## Introduction
 
-When you run the build command on Saeghe,
-it creates an "environment build" directory inside the `builds` directory
+When you run the build command, it creates an "environment build" directory inside the `builds` directory
 and then builds all files and moves them inside this directory.
 
 You may wish to clear these directories entirely. You can use the `flush` command in this case.

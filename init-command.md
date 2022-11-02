@@ -1,6 +1,6 @@
 ## Introduction
 
-When you decide to use Saeghe, you need to do some steps to prepare your application to take advantage of it.
+You need to do some steps to prepare your application to start using it.
 You can do these steps by yourself, however, there is a faster way to do so, you can use the `init` command in this case.
 
 ## Usage

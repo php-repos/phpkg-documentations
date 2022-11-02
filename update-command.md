@@ -22,7 +22,7 @@ saeghe update https://github.com/{owner}/{repo}.git --version={version-tag}
 > If you are not sure what path did you use for adding the package, 
 > you can always check the `packages` section in your `saeghe.config.json` file to see the path.
 
-Saeghe will remove the current version of the package from your application 
+It removes the current version of the package from your application 
 and then adds the latest version of your desired version.
 
 ## Example

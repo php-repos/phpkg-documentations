@@ -13,7 +13,11 @@ so you can get access to it from any path and use it as all your projects’ pac
 You need to have git installed on your machine as well as PHP version >= 8.0
 with `php-mbstring`, `php-zip`, and `php-curl` extensions installed.
 
-## Use Installer
+## Step 1: Download
+
+First step is to download required files. You can do it automatically or manually.
+
+### Use Installer
 
 Using the installer will be the easiest method.
 You can simply run the following line, and you should have it ready to use:
@@ -26,7 +30,7 @@ This command is going to make a `.saeghe` directory in your home directory and,
 it installs the required source files under this directory.
 It also adds its source directory to your `$PATH` so you can easily start to use it.
 
-## Manual Installation
+### Manual Installation
 
 You can manually install it by following these steps:
 
@@ -39,9 +43,14 @@ You can manually install it by following these steps:
 - Add path to its source directory into your `$PATH`
 - To make sure everything is installed correctly, run `saeghe --help` and you should see the help.
 
-## Add GitHub token
+## Step 2: Source your terminal
 
-Either way, you need to have a GitHub access token. A GitHub token is required to read repositories.
+If you used the installer, a path to the Saeghe has been added to your source file (`.bashrc` or `.zshrc`). 
+You need to either, open a new terminal or source your current terminal to get access to new added path.
+
+## Step 3: Add GitHub token
+
+You need to have a GitHub access token. A GitHub token is required to read repositories.
 You can generate a token by following this [link](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token).
 Then you can use the following command to add it to credentials:
 

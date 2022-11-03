@@ -20,6 +20,8 @@ bash -c "$(curl -fsSL https://raw.github.com/saeghe/installation/master/install.
 ```
 
 By running this command, it will be installed on your home directory.
+> **Note**
+> You need to open a new terminal to get access to the new path.
 
 ## Add GitHub token
 

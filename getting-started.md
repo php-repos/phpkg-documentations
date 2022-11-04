@@ -26,6 +26,8 @@ By running this command, it will be installed on your home directory.
 ## Add GitHub token
 
 A GitHub token is required to read repositories. 
+If you already have an environment variable named `GITHUB_TOKEN` with your GitHub token, then you don't need to do anything. 
+But in case you don't have this environment variable, you need to set one using the `credential` command.
 You can generate a token by following this [link](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token). 
 Then you can use the following command to add it to credentials:
 

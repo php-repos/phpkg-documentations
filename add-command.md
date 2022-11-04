@@ -44,11 +44,12 @@ In this case, you can specify `development` as the version tag, and it clones th
 Cloning the package also happens when there is no release for the package.
 
 > **Note**  
-> If you are adding a private package, you will need a token for cloning or downloading the package.
-> You must add your access token in the `.credential` file under the saeghe installation directory.
+> For reading packages, Saeghe needs a token. 
+> You either, should have an environment variable named `GITHUB_TOKEN` containing a GitHub Token, 
+> or you need to add one using the `credential` command.
 >
-> For more information about generating the personal access token,
-> please read [this documentation](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token).
+> For more information about the `credential` command, 
+> please read [this documentation](http://saeghe.com/documentations/credential-command).
 
 ## Example
 

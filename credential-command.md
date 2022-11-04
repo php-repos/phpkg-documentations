@@ -1,8 +1,11 @@
 ## Introduction
 
-If your project needs to use external packages, Saeghe needs to read repositories from Github. 
+If your project needs to use external packages, Saeghe needs to read repositories from GitHub. 
 It needs to have an access token to read repositories. 
 You can use the `credentail` command to add your token.
+
+> **Note**
+> If you already have an environment variable named `GITHUB_TOKEN` with your GitHub token, then you don't need to do anything.
 
 ## Usage
 

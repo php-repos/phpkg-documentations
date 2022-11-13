@@ -39,8 +39,12 @@ You can manually install it by following these steps:
 - Download the latest version from [github](https://github.com/saeghe/saeghe/releases)
 - Unzip the downloaded file
 - Rename the unzipped directory to `saeghe`
-- Download the latest version of `cli` package from [github](https://github.com/saeghe/cli/releases)
+- Download the latest version of `CLI` package from [github](https://github.com/saeghe/cli/releases)
 - Unzip the cli package and move its files and directories to `saeghe/Packages/saeghe/cli`
+- Download the latest version of `Datatype` package from [github](https://github.com/saeghe/datatype/releases)
+- Unzip the datatype package and move its files and directories to `saeghe/Packages/saeghe/datatype`
+- Download the latest version of `FileManager` package from [github](https://github.com/saeghe/file-manager/releases)
+- Unzip the file manager package and move its files and directories to `saeghe/Packages/saeghe/file-manager`
 - Make a copy from `credentials.example.json` to `.credentials.json`
 - Add path to its source directory into your `$PATH`
 - Either, open a new tab or source your `.bashrc`/`.zshrc` file

@@ -12,9 +12,9 @@ Your package is ready to use as soon as you push it to the git.
 Adding a package to your application using the `add` command is very easy.
 You only need to provide a path to your desired package, and it adds that package to your application.
 
-The path can be an HTTPS path or SSH path to the package.
+The path can be a HTTPS path or SSH path to the package.
 
-For HTTPS path use:
+For a HTTPS path use:
 
 ```shell
 saeghe add https://github.com/{owner}/{repo}.git
@@ -28,6 +28,17 @@ saeghe add git@github.com:{owner}/{repo}.git
 
 You can simply add any package to your application using this single command.
 Remember to replace `{owner}` and `{repo}` with your desired package owner and repo name.
+
+Alternatively, you can define an alias for a package and use the alias for adding the package.
+
+```shell
+saeghe alias package-alias git@github.com:{owner}/{repo}.git
+saeghe add package-alias
+```
+
+> **Note**
+> For more information about the `alias` command,
+> please read [this documentation](http://saeghe.com/documentations/alias-command).
 
 By default, it checks the given package's repository to see if there are any releases for the package.
 If it finds releases, it downloads the latest release of the package for your application,

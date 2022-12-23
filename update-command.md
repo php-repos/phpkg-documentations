@@ -18,12 +18,15 @@ In this case, you need to just pass the version tag to the update command:
 ```shell
 saeghe update https://github.com/{owner}/{repo}.git --version={version-tag}
 ```
-> **Note**  
-> If you are not sure what path did you use for adding the package, 
-> you can always check the `packages` section in your `saeghe.config.json` file to see the path.
 
 It removes the current version of the package from your application 
 and then adds the latest version of your desired version.
+
+You may define an alias for the package therefore, later you can use the defined alias for updating the package:
+
+> **Note**
+> For more information about the `alias` command,
+> please read [this documentation](http://saeghe.com/documentations/alias-command).
 
 ## Example
 
@@ -42,4 +45,17 @@ then you need to specify the version number:
 
 ```shell
 saeghe update https://github.com/saeghe/test-runner.git --version=v1.0.1
+```
+
+If you defined an alias for the package, then you can use the alias for updating the package.
+Let's assume we defined a `test-runner` alias for this package. Then you can run the following command:
+
+```shell
+saeghe update test-runner
+```
+
+For updating to a specific version:
+
+```shell
+saeghe update test-runner --version=v1.0.1
 ```

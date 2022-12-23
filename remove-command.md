@@ -7,17 +7,25 @@ Removing a package from your application is also a very easy process.
 
 The only thing you need to pass is the package’s path.
 
-If you added the package using the HTTPS URL then simply replace the owner and the repo name in the following command and run it:
+You can pass the ssh URL or the https URl of the package to the remove command.
 
 ```shell
+// Remove using a https URL
 saeghe remove https://github.com/{owner}/{repo}
-```
-
-If you used the SSH path for adding the package you need to run:
-
-```shell
+// Remove using a ssh URL
 saeghe remove git@github.com:{owner}/{repo}.git
 ```
+
+Alternatively you might define an alias for a specific package and then use the defined alias for removing the package.
+
+```shell
+saeghe alias package-alias git@github.com:{owner}/{repo}.git
+saeghe remove package-alias
+```
+
+> **Note**
+> For more information about the `alias` command,
+> please read [this documentation](http://saeghe.com/documentations/alias-command).
 
 The given package will be removed from your package’s directory, `saeghe.config.json` file, and `saeghe.config-lock.json` file.
 
@@ -32,5 +40,12 @@ now for removing the package from your application, you can run the following co
 
 ```shell
 saeghe remove https://github.com/saeghe/test-runner
+```
+
+Using an alias for the package can make it easier:
+
+```shell
+saeghe alias test-runner https://github.com/saeghe/test-runner
+saeghe remove test-runner
 ```
 

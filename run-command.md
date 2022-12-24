@@ -24,3 +24,9 @@ saeghe run https://github.com/saeghe/chuck-norris.git
 ```
 
 By running this command, you will see the output in your terminal.
+
+You can see your location's weather forecast in your terminal by running the following command:
+
+```shell
+saeghe run https://github.com/saeghe/weather.git
+```

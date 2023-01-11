@@ -8,7 +8,7 @@ It works with git directly. It means there is no need for any intermediate repos
 
 ## Requirements
 
-For installing it, you need to have git installed on your machine as well as PHP version >= 8.0
+For installing it, you need to have git installed on your machine as well as PHP version >= 8.1
 with `php-mbstring`, `php-zip` and `php-curl` extensions installed.
 
 ## Installation

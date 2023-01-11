@@ -10,7 +10,7 @@ so you can get access to it from any path and use it as all your projects’ pac
 
 ## Requirements
 
-You need to have git installed on your machine as well as PHP version >= 8.0
+You need to have git installed on your machine as well as PHP version >= 8.1
 with `php-mbstring`, `php-zip`, and `php-curl` extensions installed.
 
 ## Step 1: Download

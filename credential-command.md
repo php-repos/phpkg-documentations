@@ -1,8 +1,8 @@
 ## Introduction
 
-If your project needs to use external packages, Saeghe needs to read repositories from GitHub. 
-It needs to have an access token to read repositories. 
-You can use the `credentail` command to add your token.
+f your project needs to use external packages, `phpkg` needs to access repositories on GitHub. 
+In order to do so, it requires an access token. 
+You can use the `credential` command to add your token.
 
 > **Note**
 > If you already have an environment variable named `GITHUB_TOKEN` with your GitHub token, then you don't need to do anything.
@@ -13,7 +13,7 @@ First, follow this [link](https://docs.github.com/en/authentication/keeping-your
 and generate an access token. Then run the following command:
 
 ```shell
-saeghe credential github.com {your-github-access-token}
+phpkg credential github.com {your-github-access-token}
 ```
 
-That's it. Now it can get access to GitHub APIs.
+This will allow phpkg to access the GitHub APIs and read repositories.

@@ -1,18 +1,25 @@
 ## Introduction
 
-Most probably, you are not going to commit your packages directory into your git repo.
-This is one of the reasons you want to use a package manager.
-So now, when you want to work on the same project on another machine,
-or when you want to deploy your application,
-you need to download same repositories and install the required packages.
-As you can guess, there is a simple command that you need to run to install all your packages.
+Once you've added all the required packages to your application using the `add` command,
+you may want to install them on another machine or environment.
+
+The `install` command allows you to install all of the packages defined in your `phpkg.config.json` file.
+It uses the `packages` config section to determine which packages should be installed.
 
 ## Usage
 
-To install all used packages in your application and their packages that are saved in your `saeghe.config-lock.json` file, run:
+To install all of the packages defined in your `phpkg.config.json` file, simply run the following command in your application:
 
 ```shell
-saeghe install
+phpkg install
 ```
 
-And you will see the same copy of the used packages in the packages' directory.
+This command will install all of the packages defined in your `phpkg.config.json` file's packages config section
+and will place them in the directory defined in the `packages-directory` config section.
+If the directory does not exist, it will be created.
+
+> **Note**
+> Make sure that you've run the `add` command before running the `install` command
+> to ensure that all of the required packages are defined in your `phpkg.config.json` file.
+> Please see [add command documentation](https://phpkg.com/documentations/add-command)
+

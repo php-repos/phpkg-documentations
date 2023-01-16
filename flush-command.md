@@ -1,19 +1,22 @@
 ## Introduction
 
-When you run the build command, it creates an "environment build" directory inside the `builds` directory
-and then builds all files and moves them inside this directory.
-
-You may wish to clear these directories entirely. You can use the `flush` command in this case.
+The `flush` command is used to remove all the files and directories that were created during the build process.
+This command can be useful when you want to start a fresh build or when you want to clear any unnecessary files 
+that may have been created during the build process.
 
 ## Usage
 
-Inside your application, run this command:
+To use the `flush` command, navigate to the root directory of your application and run the following command:
 
 ```shell
-saeghe flush
+phpkg flush
 ```
 
-Now if you check the environment build directory
-([check build documentation](https://saeghe.com/documentations/build-command))
-you should not see any files under this directory.
+This command will remove all the files and directories that were created in the "environment build" directory inside the `builds` directory.
 
+> **Note**  
+> Be careful when using this command, as it will delete all the files and directories that were created by the build command.
+> Make sure to backup any necessary files before running this command.
+
+After running this command, you can check the "environment build" directory to confirm that it is empty.
+You can then run the `build` command again to start a fresh build of your application.

@@ -1,15 +1,14 @@
 ## Introduction
 
-You can build your project using the `build` command. 
-However, it is inconvenient to run the `build` command for every change. 
-You can use the `watch` command to do it for you.
+The `watch` command allows you to automatically rebuild your project whenever changes are made to its source files.
+This can be useful during development, as it eliminates the need to manually run the `build` command every time you make a change.
 
 ## Usage
 
-In your terminal run this command:
+To start watching your project for changes, simply run the following command in your terminal:
 
 ```shell
-saeghe watch
+phpkg watch
 ```
 
-That's it. Now you can start developing your application and your changes will be built while you are developing.
+This will start a process that will watch for changes in your project's source files, and automatically rebuild the project whenever a change is detected.

@@ -1,10 +1,10 @@
 ## Introduction
 
-Saeghe is a modern PHP package manager. You can simply manage your package dependencies and your codebase.
-It detects your required PHP files from your codebase and your application's dependencies.
-Then adds them to your code.
-This way you can take advantage of both; `Functional` and `OOP` programming.
-It works with git directly. It means there is no need for any intermediate repository registration.
+phpkg is a modern PHP package manager that is ideal for developers working on projects that require functional 
+and object-oriented programming. 
+It allows you to easily manage your package dependencies using `phpkg` in your codebase.
+It detects your required PHP files from your codebase and your application's dependencies, and then adds them to your code. 
+It works with git repositories directly, meaning there is no need for any intermediate repository registration.
 
 ## Requirements
 
@@ -13,15 +13,16 @@ with `php-mbstring`, `php-zip` and `php-curl` extensions installed.
 
 ## Installation
 
-You can simply install Saeghe by running the following command in your terminal:
+You can simply install `phpkg` by running the following command in your terminal:
 
 ```shell
-bash -c "$(curl -fsSL https://raw.github.com/saeghe/installation/master/install.sh)"
+bash -c "$(curl -fsSL https://raw.github.com/php-repos/phpkg-installation/master/install.sh)"
 ```
 
-By running this command, it will be installed on your home directory.
+By running this command, `phpkg` will be installed on your home directory.
+
 > **Note**
-> You need to open a new terminal to get access to the new path.
+> You need to open a new terminal to get access to the new added path.
 
 ## Add GitHub token
 
@@ -32,14 +33,35 @@ You can generate a token by following this [link](https://docs.github.com/en/aut
 Then you can use the following command to add it to credentials:
 
 ```shell
-saeghe credential github.com {your-github-token}
+phpkg credential github.com {your-github-token}
 ```
 
 Now it is ready to use.
 
 ## Usage
 
-### Initialize your application
+With `phpkg`, you can easily manage dependencies for your projects during development by installing and updating 
+the necessary libraries and packages with just a few simple commands. 
+
+For example, to install a package called "mypackage" from a git repository, you can run the following command:
+
+```shell
+phpkg add git+https://github.com/myuser/mypackage
+```
+
+Additionally, it also allows for running standalone packages,
+making it easy for you to execute any PHP applications or scripts with just one command.
+for example, to run a package called "mypackage", you can run the following command:
+
+```shell
+phpkg run mypackage
+```
+
+You should expect to see the package's output displayed in the terminal.
+
+### Use as a package manager
+
+#### Initialize your application
 
 First, make your application's directory and change your current directory to it:
 
@@ -50,19 +72,18 @@ mkdir my-application && cd my-application
 Next run the `init` command to create the required files and directories:
 
 ```shell
-saeghe init
+phpkg init
 ```
 
 > **Note**  
-> For more information about init command, check its [documentation](http://saeghe.com/documentations/init-command).
+> For more information about init command, check its [documentation](http://phpkg.com/documentations/init-command).
 
-Now you will see two added directories, `builds` and `Packages`.
+Now you will see a `Packages` directory added to your project.
 The `Packages` directory gets used to keep your added package’s source files.
-The `builds` directory will be used when you run the `build` command we will explain later.
 
 Also, you will see two new files added to your application.
-`saeghe.config.json` and `saeghe.config-lock.json`.
-The `saeghe.config.json` is for keeping your application's configuration.
+`phpkg.config.json` and `phpkg.config-lock.json`.
+The `phpkg.config.json` is for keeping your application's configuration.
 
 The default content for this file should be:
 
@@ -79,20 +100,20 @@ The default content for this file should be:
 
 > **Note**  
 > For more information about configurations,
-> please check [customization documentation](http://saeghe.com/documentations/customization).
+> please check [customization documentation](http://phpkg.com/documentations/customization).
 
-The `saeghe.config-lock.json` file will be used for keeping metadata about added packages.
+The `phpkg.config-lock.json` file will be used for keeping metadata about added packages.
 
 > **Note**  
 > For more information about adding packages,
-> please check [add command documentation](http://saeghe.com/documentations/add-command).
+> please check [add command documentation](http://phpkg.com/documentations/add-command).
 
-### Add your application's map
+#### Add your application's map
 
 The next step is to define your map.
 Assume you want to keep your application files in the `src` directory
 and have a `tests` directory to add your tests into it.
-You need to define your map configuration inside the `saeghe.config.json` file as follows:
+You need to define your map configuration inside the `phpkg.config.json` file as follows:
 
 ```json
 {
@@ -108,29 +129,29 @@ You need to define your map configuration inside the `saeghe.config.json` file a
 }
 ```
 
-By this configuration, it maps any used namespace starting with `Application` to the `src` directory
+By this configuration, `phpkg` maps any used namespace starting with `Application` to the `src` directory
 and any used namespaces starting with `Tests` to your `tests` directory.
 
-We are going to explain more about mapping in examples.
+Later on the example, you will see how `phpkg` uses this map.
 
-### Adding packages
+#### Adding packages
 
 For adding any packages to your application you can use the `add` command.
 For example, if you want to use the `test-runner` package,
 you can simply copy its URL from GitHub and run the following command:
 
 ```shell
-saeghe add https://github.com/saeghe/test-runner.git
+phpkg add https://github.com/php-repos/test-runner.git
 ```
 
 As you see, there is no intermediate repository website for packages, you can directly use their git URL.
 
 After running this command, there will be three changes in your application:
 - Test runner source code will be added under the `Packages` directory.
-- Test runner path and installed version will be added to your `saeghe.config.json` file.
-- Test runner metadata will be added to your `saeghe.config-lock.json` file.
+- Test runner path and installed version will be added to your `phpkg.config.json` file.
+- Test runner metadata will be added to your `phpkg.config-lock.json` file.
 
-So far, if you did similar steps, your `saeghe.config.json` file should be like this:
+So far, if you did similar steps, your `phpkg.config.json` file should be like this:
 
 ```json
 {
@@ -143,20 +164,20 @@ So far, if you did similar steps, your `saeghe.config.json` file should be like 
   "executables": [],
   "packages-directory": "Packages",
   "packages": {
-    "https:\/\/github.com\/saeghe\/test-runner.git": "installed-version"
+    "https:\/\/github.com\/php-repos\/test-runner.git": "installed-version"
   }
 }
 ```
 
-And your `saeghe.config-lock.json` file should be something like this:
+And your `phpkg.config-lock.json` file should be something like this:
 
 ```json
 {
     "packages": {
-        "git@github.com:saeghe\/test-runner.git": {
+        "git@github.com:php-repos\/test-runner.git": {
             "version": "installed-version",
             "hash": "installed-commit-hash",
-            "owner": "saeghe",
+            "owner": "php-repos",
             "repo": "test-runner"
         }
     }
@@ -165,14 +186,14 @@ And your `saeghe.config-lock.json` file should be something like this:
 
 > **Note**  
 > For more information about adding packages and versioning,
-> please check [add command documentation](http://saeghe.com/documentations/add-command).
+> please check [add command documentation](http://phpkg.com/documentations/add-command).
 
-### Add your entry points
+#### Add your entry points
 
 The required code for autoloading used classes gets added automatically to your entry point files.
 For example, let's say your entry point is in the `public/index.php` file.
-Then by adding this file to the entry points config in the `saeghe.config.json` file,
-it adds the required map and code for autoloading to these files.
+Then by adding this file to the entry points config in the `phpkg.config.json` file,
+`phpkg` adds the required code for autoloading to these files.
 
 ```json
 {
@@ -185,26 +206,26 @@ it adds the required map and code for autoloading to these files.
   "executables": [],
   "packages-directory": "Packages",
   "packages": {
-    "https:\/\/github.com\/saeghe\/test-runner.git": "installed-version"
+    "https:\/\/github.com\/php-repos\/test-runner.git": "installed-version"
   }
 }
 ```
 
-### Build your code for the development
+#### Build your code for the development
 
 When you are ready to run and test your application, you need to build your files using the `build` command.
 For doing this, you should run:
 
 ```shell
-saeghe build
+phpkg build
 ```
 
 By running this command, it makes a `development` directory
-under your `builds` directory and then starts to build your application into it.
+under a `builds` directory and then starts to build your application into it.
 
 > **Note**  
 > For more information about the build command,
-> please check [build command documentation](http://saeghe.com/documentations/build-command).
+> please check [build command documentation](http://phpkg.com/documentations/build-command).
 
 For example, assume you have two PHP files in your application.
 
@@ -239,7 +260,7 @@ class User
 
 ```
 
-Now, if you run the `build` command, you should see these changes:
+Now, if you run the `build` command, you should see these:
 
 Under `builds/development/src/MyController.php`:
 
@@ -276,15 +297,16 @@ class User
 
 There are no changes for the `User.php` file since there are no use statements in this file.
 
-The required map for autoloading used classes also has been added to the `build/development/public/index.php` file.
+The required map for autoloading used classes also has been added to the `build/development/public/index.php` 
+that you defined as an entry point.
 
-Use can use the `build` command, to build files containing any kind of use statement.
+You can use the `build` command, to build files containing any kind of use statement.
 
 > **Note**  
 > For more information about use statements,
 > please check [PHP use statements](https://www.php.net/manual/en/language.namespaces.importing.php).
 
-### Developing
+#### Continues Development
 
 While you are developing your application,
 you are going to constantly add and remove files to your project and test the application.
@@ -293,27 +315,50 @@ Running the `build` command for each change and test is not optimal.
 There is a `watch` command that you can run:
 
 ```shell
-saeghe watch
+phpkg watch
 ```
 
 > **Note**  
 > For more information about `watch`,
-> please check [watch documentation](https://saeghe.com/documentations/watch-command).
+> please check [watch documentation](https://phpkg.com/documentations/watch-command).
 
-### Build for production
+#### Build for production
 
 When your application has been ready, you can build the application for the production environment.
 You can use the `build` command like the following:
 
 ```shell
-saeghe build production
+phpkg build production
 ```
 
 This command will make a `production` directory under your `builds` directory and builds your application into it.
 
 > **Note**  
 > For more information about `build`,
-> please check [build documentation](https://saeghe.com/documentations/build-command).
+> please check [build documentation](https://phpkg.com/documentations/build-command).
+
+### Use as a application runner
+
+You can use `phpkg` to run any runnable package, which means a package that has an entry point file.
+This feature is useful for developers who want to run small, stand-alone scripts or programs.
+For example, you can find 2 runnable packages in the `php-repos`:
+
+- [Chuck Norris package](https://github.com/php-repos/chuck-norris)
+- [Weather package](https://github.com/php-repos/weather)
+
+The `chuck-norris` package will show a chuck norris joke in your terminal
+and the `weather` package shows a beautiful weather forecast for your location.
+
+For running these packages, you can simply call the `run` command:
+
+```shell
+phpkg run https://github.com/php-repos/chuck-norris // Shows a joke in your terminal
+phpkg run https://github.com/php-repos/weather // Shows weather forecast on your terminal
+```
+
+> **Note**  
+> For more information about `run`,
+> please check [run documentation](https://phpkg.com/documentations/run-command).
 
 ## Migrate from composer
 
@@ -321,9 +366,9 @@ If you have a package or application that uses composer as the package manager,
 you can use the following command to migrate from composer:
 
 ```shell
-saeghe migrate
+phpkg migrate
 ```
 
 > **Note**  
 > For more information about migration,
-> please check [migrate documentation](https://saeghe.com/documentations/migrate-command).
+> please check [migrate documentation](https://phpkg.com/documentations/migrate-command).

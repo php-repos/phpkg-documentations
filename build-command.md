@@ -5,31 +5,33 @@ As you know, we need to import used PHP files using one of
 [`include`](https://www.php.net/manual/en/function.include.php),
 [`require_once`](https://www.php.net/manual/en/function.require-once.php) and
 [`include_once`](https://www.php.net/manual/en/function.include-once.php) expressions.
-This is a frustrating job to keep all imports in sync with file and directory changes.
+This can be a tedious and time-consuming task, especially when dealing with changes in file and directory locations.
 
-This is the place that Saeghe comes to solve for you. You can write your PHP code, without considering file locations.
-Then it resolve and add them for you, either they are on your application or they come from another package.
+phpkg solves this problem by allowing you to write your PHP code without worrying about file locations.
+It automatically resolves and adds the required files to your code, whether they are part of your application or from another package.
 
 ## Usage
 
-By running the following command, you can build your application for the `development` environment:
+The build command is used to create a copy of your application for a specific environment.
+For example, to build your application for the development environment, you would run the following command:
 
 ```shell
-saeghe build
+phpkg build
 ```
 
-After running this command, you will have a clone of your application under the `builds/development` directory.
-When you run the build command, it uses your `saeghe.config.json` file
-and builds your application based on the defined configs on this file.
+This command uses the settings defined in your `phpkg.config.json` file to build your application.
+A copy of your application will be created in the builds/development directory.
 
 > **Note**  
-> Please read [configuration documentation](https://saeghe.com/documentations/customization)
+> Please read [configuration documentation](https://phpkg.com/documentations/customization)
 > to learn how you can customize it.
 
-You can also build your application for the production environment like so:
+
+
+You can also build your application for the production environment using the following command:
 
 ```shell
-saeghe build production
+phpkg build production
 ```
 
 By running this command, you will see a built copy of your application in the `builds/production` directory.
@@ -69,6 +71,8 @@ require_once '/var/www/src/Str.php';
 
 use Application\SubDomain\ClassFoo;
 use Exception;
+use function Application\Str\between;
+use const Application\Constants\CONSTANT_A;
 
 class ClassBar extends ClassFoo
 {
@@ -122,7 +126,7 @@ require_once '/var/www/src/Helper.php';
 use Application\SubDomain\ClassFoo;
 use Application\AnotherNamespace\ClassBaz as Baz;
 use function Application\SampleFile\anImportantFunction;
-use function Application\Helper\helper1 as anotherFunction;
+use function Application\HelperNamespace\helper1 as anotherFunction;
 use const Application\Constants\CONSTANT;
 use const Application\OtherConstants\RENAME as AnotherConstant;
 use PackageFoo\ClassInFoo as AnotherFile, PackageBar\SubDirectory\ClassInBar;
@@ -139,5 +143,4 @@ class ClassBar extends ClassFoo
 
 And the map for used classes has been added to the `public/index.php`.
 
-You can take advantage of both, `Functional` and `OOP` programming without thinking about files. 
-
+You can take advantage of both, `Functional` and `OOP` programming without thinking about files.

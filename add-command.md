@@ -1,6 +1,7 @@
 ## Introduction
 
-You can use the `add` command to add a git repository to your application as a package.
+You can use the `add` command to add a git repository to your application as a package. 
+This feature is useful for developers who want to use external packages or libraries in their application.
 
 As a package user, simply search online, and as soon as you reach the git repo, you can add it.
 
@@ -17,13 +18,13 @@ The path can be a HTTPS path or SSH path to the package.
 For a HTTPS path use:
 
 ```shell
-saeghe add https://github.com/{owner}/{repo}.git
+phpkg add https://github.com/{owner}/{repo}.git
 ```
 
 For SSH path use:
 
 ```shell
-saeghe add git@github.com:{owner}/{repo}.git
+phpkg add git@github.com:{owner}/{repo}.git
 ```
 
 You can simply add any package to your application using this single command.
@@ -32,20 +33,20 @@ Remember to replace `{owner}` and `{repo}` with your desired package owner and r
 Alternatively, you can define an alias for a package and use the alias for adding the package.
 
 ```shell
-saeghe alias package-alias git@github.com:{owner}/{repo}.git
-saeghe add package-alias
+phpkg alias package-alias git@github.com:{owner}/{repo}.git
+phpkg add package-alias
 ```
 
 > **Note**
 > For more information about the `alias` command,
-> please read [this documentation](http://saeghe.com/documentations/alias-command).
+> please read [this documentation](http://phpkg.com/documentations/alias-command).
 
 By default, it checks the given package's repository to see if there are any releases for the package.
 If it finds releases, it downloads the latest release of the package for your application,
 unless you specify the version tag that you wish to install.
 
 ```shell
-saeghe add https://github.com/{owner}/{repo}.git --version={tag-name}
+phpkg add https://github.com/{owner}/{repo}.git --version={tag-name}
 ```
 
 In this case, it adds the same version of the package to your application.
@@ -55,40 +56,39 @@ In this case, you can specify `development` as the version tag, and it clones th
 Cloning the package also happens when there is no release for the package.
 
 > **Note**  
-> For reading packages, Saeghe needs a token. 
+> For reading packages, phpkg needs a token. 
 > You either, should have an environment variable named `GITHUB_TOKEN` containing a GitHub Token, 
 > or you need to add one using the `credential` command.
 >
 > For more information about the `credential` command, 
-> please read [this documentation](http://saeghe.com/documentations/credential-command).
+> please read [this documentation](http://phpkg.com/documentations/credential-command).
 
 ## Example
 
 Let's say you need to install the `test-runner` package to our application.
-The owner of this package is `saeghe` and the repo is `test-runner`.
+The owner of this package is `php-repos` and the repo is `test-runner`.
 You only need to run:
 
 ```shell
-saeghe add https://github.com/saeghe/test-runner
+phpkg add https://github.com/php-repos/test-runner
 ```
-And it will install the package to `Packages/saeghe/test-runner` on your project directory.
+And it will install the package to `Packages/php-repos/test-runner` on your project directory.
 
-You will see the package in your `saeghe.config.json` file under the `packages` section:
+You will see the package in your `phpkg.config.json` file under the `packages` section:
 
 ```json
 "packages": {
-    "git@github.com:saeghe\/test-runner.git": "version-number"
+    "git@github.com:php-repos\/test-runner.git": "version-number"
 }
 ```
 
-The package metadata will be added to the `saeghe.config-lock.json` file:
+The package metadata will be added to the `phpkg.config-lock.json` file:
 
 ```json
-"git@github.com:saeghe\/test-runner.git": {
+"git@github.com:php-repos\/test-runner.git": {
     "version": "version-number",
     "hash": "hash-for-installed-version",
-    "owner": "saeghe",
+    "owner": "php-repos",
     "repo": "test-runner"
 }
 ```
-

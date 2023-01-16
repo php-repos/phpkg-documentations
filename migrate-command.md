@@ -8,12 +8,12 @@ If you wish to migrate, you can use the `migrate` command.
 On the package or application directory that you want to migrate, run the following command:
 
 ```shell
-saeghe migrate
+phpkg migrate
 ```
 
 This command reads from your `composer.json` and `composer.lock` files and migrates your used packages
-from the `vendor` directory to a `Packages` directory. It also makes `saeghe.config.json` and
-`saeghe.config-lock.json` files for your application/package and all dependencies.
+from the `vendor` directory to a `Packages` directory. It also makes `phpkg.config.json` and
+`phpkg.config-lock.json` files for your application/package and all dependencies.
 
 After that, you can simply run the `build` command.
 

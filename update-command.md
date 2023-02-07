@@ -27,7 +27,7 @@ phpkg update my-package
 
 > **Note**
 > For more information about the `alias` command,
-> please read [this documentation](http://phpkg.com/documentations/alias-command).
+> please read [this documentation](https://phpkg.com/documentations/alias-command).
 
 ## Example
 

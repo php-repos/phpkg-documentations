@@ -46,7 +46,7 @@ the necessary libraries and packages with just a few simple commands.
 For example, to install a package called "mypackage" from a git repository, you can run the following command:
 
 ```shell
-phpkg add git+https://github.com/myuser/mypackage
+phpkg add https://github.com/myuser/mypackage
 ```
 
 Additionally, it also allows for running standalone packages,
@@ -76,7 +76,7 @@ phpkg init
 ```
 
 > **Note**  
-> For more information about init command, check its [documentation](http://phpkg.com/documentations/init-command).
+> For more information about init command, check its [documentation](https://phpkg.com/documentations/init-command).
 
 Now you will see a `Packages` directory added to your project.
 The `Packages` directory gets used to keep your added package’s source files.
@@ -100,13 +100,26 @@ The default content for this file should be:
 
 > **Note**  
 > For more information about configurations,
-> please check [customization documentation](http://phpkg.com/documentations/customization).
+> please check [customization documentation](https://phpkg.com/documentations/customization).
 
 The `phpkg.config-lock.json` file will be used for keeping metadata about added packages.
 
 > **Note**  
 > For more information about adding packages,
-> please check [add command documentation](http://phpkg.com/documentations/add-command).
+> please check [add command documentation](https://phpkg.com/documentations/add-command).
+
+#### Migrate from composer
+
+If you have a project that uses composer, and you wish to use `phpkg` on that project, 
+you can use the migrate command to make a config file that contains required namespace from your installed packages.
+
+```shell
+phpkg migrate
+```
+
+> **Note**  
+> For more information about migrate command,
+> please check [migrate documentation](https://phpkg.com/documentations/migrate-command).
 
 #### Add your application's map
 
@@ -186,7 +199,7 @@ And your `phpkg.config-lock.json` file should be something like this:
 
 > **Note**  
 > For more information about adding packages and versioning,
-> please check [add command documentation](http://phpkg.com/documentations/add-command).
+> please check [add command documentation](https://phpkg.com/documentations/add-command).
 
 #### Add your entry points
 
@@ -225,7 +238,7 @@ under a `builds` directory and then starts to build your application into it.
 
 > **Note**  
 > For more information about the build command,
-> please check [build command documentation](http://phpkg.com/documentations/build-command).
+> please check [build command documentation](https://phpkg.com/documentations/build-command).
 
 For example, assume you have two PHP files in your application.
 

@@ -24,7 +24,7 @@ phpkg remove package-alias
 
 > **Note**
 > For more information about the `alias` command,
-> please read [this documentation](http://phpkg.com/documentations/alias-command).
+> please read [this documentation](https://phpkg.com/documentations/alias-command).
  
 When you run the `remove` command, the given package will be removed from your package's directory, `phpkg.config.json` file, and `phpkg.config-lock.json` file.
 

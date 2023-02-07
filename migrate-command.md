@@ -11,16 +11,10 @@ On the package or application directory that you want to migrate, run the follow
 phpkg migrate
 ```
 
-This command reads from your `composer.json` and `composer.lock` files and migrates your used packages
-from the `vendor` directory to a `Packages` directory. It also makes `phpkg.config.json` and
-`phpkg.config-lock.json` files for your application/package and all dependencies.
+This command reads from your `composer.json` and `composer.lock` files 
+and creates a `phpkg.config.json` file for your project.
 
 After that, you can simply run the `build` command.
 
 > **Note**  
 > For migration you need to have your `vendor` directory installed from the composer.
-
-> **Note**  
-> The `migrate` command will not guarantee to migrate of everything properly yet.
-> There might be required for you to add some `use` statements in used classes.
-

@@ -39,7 +39,7 @@ phpkg add package-alias
 
 > **Note**
 > For more information about the `alias` command,
-> please read [this documentation](http://phpkg.com/documentations/alias-command).
+> please read [this documentation](https://phpkg.com/documentations/alias-command).
 
 By default, it checks the given package's repository to see if there are any releases for the package.
 If it finds releases, it downloads the latest release of the package for your application,
@@ -61,7 +61,7 @@ Cloning the package also happens when there is no release for the package.
 > or you need to add one using the `credential` command.
 >
 > For more information about the `credential` command, 
-> please read [this documentation](http://phpkg.com/documentations/credential-command).
+> please read [this documentation](https://phpkg.com/documentations/credential-command).
 
 ## Example
 

@@ -9,7 +9,7 @@ It works with git repositories directly, meaning there is no need for any interm
 ## Requirements
 
 For installing it, you need to have git installed on your machine as well as PHP version >= 8.1
-with `php-mbstring`, `php-zip` and `php-curl` extensions installed.
+with `php-zip` and `php-curl` extensions installed.
 
 ## Installation
 
@@ -54,10 +54,17 @@ making it easy for you to execute any PHP applications or scripts with just one 
 for example, to run a package called "mypackage", you can run the following command:
 
 ```shell
-phpkg run mypackage
+phpkg run mypackage-git-url
 ```
 
 You should expect to see the package's output displayed in the terminal.
+
+You can also serve a standalone phpkg application and access its entry point in a web browser of your choice.
+For serving an application, you can run the following command:
+
+```shell
+phpkg serve application-git-url
+```
 
 ### Use as a package manager
 
@@ -286,6 +293,8 @@ require_once '{ABSOLUTE_PATH_TO_src_DIRECTORY}/Constants.php';
 require_once '{ABSOLUTE_PATH_TO_src_DIRECTORY}/Helper.php';
 
 use Application\Model\User;
+use function Application\Helper\my_helper;
+use const Application\Constants\MY_CONST;
 
 class MyController
 {
@@ -350,7 +359,7 @@ This command will make a `production` directory under your `builds` directory an
 > For more information about `build`,
 > please check [build documentation](https://phpkg.com/documentations/build-command).
 
-### Use as a application runner
+### Use as an application runner
 
 You can use `phpkg` to run any runnable package, which means a package that has an entry point file.
 This feature is useful for developers who want to run small, stand-alone scripts or programs.
@@ -372,6 +381,22 @@ phpkg run https://github.com/php-repos/weather // Shows weather forecast on your
 > **Note**  
 > For more information about `run`,
 > please check [run documentation](https://phpkg.com/documentations/run-command).
+
+### Use by serving an application
+
+You can use `phpkg` to serve any phpkg package that has at least one entry point.
+This feature allows you to serve an application and access it using a web browser.
+For example, you can serve the [daily routine](https://github.com/php-repos/daily-routine) application by running:
+
+```shell
+phpkg serve https://github.com/php-repos/daily-routine.git
+```
+
+After running this command, you will see an output that indicated the application is ready to access on port 8000.
+
+> **Note**
+> For more information about `serve`,
+> please check [serve documentation](https://phpkg.com/documentations/serve-command).
 
 ## Migrate from composer
 

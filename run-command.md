@@ -16,6 +16,7 @@ phpkg run https://github.com/{OWNER}/{REPO}.git [entry-point]
 > **Note**
 > If the given package has more than one entry point defined in its `phpkg.config.json` file, 
 > then you need to pass a second argument to specify which entry point you need to run.
+> Otherwise, it uses the first entry point defined in the config file.
 > See [customization documents](https://phpkg.com/documentations/customization)
 
 As an example, you can run the `Chuck Norris` package that sends a request to the https://api.chucknorris.io/ and shows the
@@ -31,5 +32,5 @@ You can also see your location's weather forecast in your terminal by running th
 phpkg run https://github.com/php-repos/weather.git
 ```
 
-It's worth noting that the `run` command will install the package in a temporary location and it will be removed after running.
+It's worth noting that the `run` command will install the package in a temporary location, and it will be removed after restarting your OS.
 Also, it will not add the package to your `phpkg.config.json` file, so it will not be available for future use in your application.

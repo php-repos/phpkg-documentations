@@ -44,6 +44,8 @@ You can manually install it by following these steps:
 - Unzip the datatype package and move its files and directories to `.phpkg/Packages/php-repos/datatype`
 - Download the latest version of `FileManager` package from [github](https://github.com/php-repos/file-manager/releases)
 - Unzip the file manager package and move its files and directories to `.phpkg/Packages/php-repos/file-manager`
+- Download the latest version of `ControlFlow` package from [github](https://github.com/php-repos/control-flow/releases)
+- Unzip the control flow package and move its files and directories to `.phpkg/Packages/php-repos/control-flow`
 - Make a copy from `credentials.example.json` to `credentials.json`
 - Add path to its source directory into your `$PATH`
 - Either, open a new tab or source your `.bashrc`/`.zshrc` file

@@ -4,9 +4,6 @@ Currently, there are two options for installing `phpkg`.
 Both of these methods are going to install it in your home directory,
 so you can get access to it from any path and use it as all your projects’ package managers.
 
-> **Note**  
-> These installations work on Unix/Linux and macOS systems. Support for windows will be added soon.
-
 ## Requirements
 
 You need to have git installed on your machine as well as PHP version >= 8.1 
@@ -17,6 +14,9 @@ with `php-mbstring`, `php-zip`, and `php-curl` extensions installed.
 First step is to download required files. You can do it automatically or manually.
 
 ### Use Installer
+
+> **Note**  
+> These installer work on Unix/Linux and macOS systems. Support for windows will be added soon.
 
 Using the installer will be the easiest method.
 You can simply run the following line, and you should have it ready to use:

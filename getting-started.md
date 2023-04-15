@@ -13,6 +13,10 @@ with `php-zip` and `php-curl` extensions installed.
 
 ## Installation
 
+> **Note**  
+> These installer work on Unix/Linux and macOS systems. Support for windows will be added soon.
+> For windows, please follow [manual installation](https://phpkg.com/documentations/installation)
+
 You can simply install `phpkg` by running the following command in your terminal:
 
 ```shell

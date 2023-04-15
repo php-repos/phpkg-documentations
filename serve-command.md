@@ -4,6 +4,9 @@ You can use the `serve` command to serve any `phpkg` package without installing 
 Just pass the git URL for your desired package and start serving in your local.
 
 > **Note**
+> The `serve` command uses [php pcntl](https://www.php.net/manual/en/book.pcntl.php) extension, which is not supported on Windows operating systems.
+
+> **Note**
 > The package that you want to serve must have at least one entry point defined in its config file.
 
 ## Usage

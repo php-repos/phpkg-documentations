@@ -49,12 +49,6 @@ You can add as many mappings as you need, and `phpkg` will ensure they are prope
 
 ### Entry Points
 
-This config should point to your entry points files.
-For example, let's assume you have 2 entry points, one for HTTP requests and one for CLI requests.
-For HTTP requests, the file is in `{PROJECT_ROOT_DIRECTORY}/public/index.php`
-and for CLI, the entry file is `{PROJECT_ROOT_DIRECTORY}/cli-runner.php`.
-in this case, you need to define entry points as follows:
-
 This section allows you to specify the entry points of your application.
 For example, if you have separate entry points for HTTP requests and CLI requests like:
 

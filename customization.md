@@ -1,30 +1,29 @@
 ## Introduction
-The [init command](https://phpkg.com/documentations/init-command) in phpkg creates a `phpkg.config.json` file for your application,
-where you can find all configurable options.
-This file contains various sections that allow you to customize the behavior of `phpkg` to suit your needs.
 
-## What is included in the config file?
+The [init command](https://phpkg.com/documentations/init-command) in phpkg is a powerful tool that generates a `phpkg.config.json` file for your application. This configuration file serves as the control center for customizing various aspects of `phpkg` to align with your specific requirements.
 
-After running the `init` command, you will find a `phpkg.config.json` file with the following sections:
+## What is Included in the Configuration File?
+
+Upon executing the `init` command, you will discover a `phpkg.config.json` file that contains the following key sections:
 
 ```json
 {
-    "map": [],
-    "entry-points": [],
-    "excludes": [],
-    "executables": [],
-    "packages-directory": "Packages",
-    "packages": []
+  "map": [],
+  "autoloads": [],
+  "excludes": [],
+  "entry-points": [],
+  "executables": [],
+  "import-file": "phpkg.imports.php",
+  "packages-directory": "Packages",
+  "packages": []
 }
-
 ```
-Let's take a closer look at each of these sections:
+
+Let's delve into each of these sections individually:
 
 ### Map
 
-This section allows you to map namespaces to specific directories in your application. 
-For example, if you want to map the `MyAwesomeApplication` namespace to the `src directory,
-you would add the following configuration:
+This section empowers you to map namespaces to specific directories within your application. For example, if you wish to map the `MyAwesomeApplication` namespace to the `src` directory, you can include the following configuration:
 
 ```json
 {
@@ -34,7 +33,7 @@ you would add the following configuration:
 }
 ```
 
-You can also map other namespaces, such as `Tests` to the `tests` directory:
+You can also map additional namespaces, such as `Tests`, to the `tests` directory:
 
 ```json
 {
@@ -45,37 +44,53 @@ You can also map other namespaces, such as `Tests` to the `tests` directory:
 }
 ```
 
-You can add as many mappings as you need, and `phpkg` will ensure they are properly resolved in your application.
+Feel free to add as many mappings as needed, and `phpkg` will ensure their proper resolution within your application. It's essential to adhere to `PSR-4` standards when defining your classes and functions, and `phpkg` will handle imports using your specified mapping.
 
-### Entry Points
+As an example, if you've defined a class in your mapping, such as a `User` class, you should create a `User.php` file under the `src` directory. Here's how you can structure the `src/User.php` file:
 
-This section allows you to specify the entry points of your application.
-For example, if you have separate entry points for HTTP requests and CLI requests like:
+```php
+<?php
 
-- `{PROJECT_ROOT_DIRECTORY}/public/index.php` for HTTP requests
-- `{PROJECT_ROOT_DIRECTORY}/cli-runner.php` for CLI
+namespace MyAwesomeApplication;
 
-you would add the following configuration:
+class User
+{
+    // Your class code here
+}
+```
+
+For functions within a specific namespace, suppose you want to create a `Service` namespace for defining functions. In that case, you should add a `Service.php` file under the `src` directory, like this:
+
+```php
+<?php
+
+namespace MyAwesomeApplication\Service;
+
+function service_a()
+{
+    // Your function code here
+}
+```
+
+### Autoloads
+
+This section enables you to specify a list of files that should be autoloaded before any other code execution. For instance, if you have a `Helper.php` file containing a set of functions that you want to load during the autoload process, you can configure it as follows:
 
 ```json
 {
-  "entry-points": [
-    "public/index.php",
-    "cli-runner.php"
+  "autoloads": [
+    "helper.php"
   ]
 }
 ```
 
-`phpkg` will automatically add the required autoloading using class maps for classes in these entry point files.
+The `autoloads` section is an array, allowing you to define multiple files for autoload.
 
 ### Excludes
 
-Normally, all files and directories in your application are included in the build process.
-However, there may be certain files or directories that you don't want to include in your built application.
-For example, you may have a `node_modules` directory or a bash file like `make.sh` that you don't need in your project runtime.
-The excludes config allows you to specify files or directories that should be ignored during the build process.
+While the default behavior includes all files and directories in your application during the build process, there may be specific files or directories you wish to exclude. This is especially relevant for files or directories that serve no purpose in your project's runtime, such as `node_modules` or development scripts like `make.sh`. The `excludes` configuration empowers you to specify files or directories that should be disregarded during the build process.
 
-To exclude a file or directory, simply add it to the excludes array in your `phpkg.config.json` file:
+To exclude a file or directory, simply add it to the `excludes` array in your `phpkg.config.json` file:
 
 ```json
 {
@@ -86,18 +101,26 @@ To exclude a file or directory, simply add it to the excludes array in your `php
 }
 ```
 
-This config is useful for keeping your built application lean and reducing the number of unnecessary files.
-It's also useful for removing files or directories that may cause issues in production environments,
-such as sensitive files or development dependencies.
+The `excludes` configuration is defined relative to the root directory of your project.
 
-Also, it's important to note that the excludes config is relative to the project's root directory.
+### Entry Points
+
+This section allows you to define the entry points of your application. For example, if your application has distinct entry points for HTTP requests and CLI requests, you can specify them as follows:
+
+```json
+{
+  "entry-points": [
+    "public/index.php",
+    "cli-runner.php"
+  ]
+}
+```
+
+`phpkg` will automatically facilitate the necessary autoloading using class maps for classes in these entry point files.
 
 ### Executables
 
-If you are developing a package, or you want to separate your main application into smaller packages,
-you may end up having some executable files that you want to have in your main application as well.
-For example, let's assume you are developing a package named `rocket` and it contains an executable file named `launch.php`.
-You can define this file as an executable in your main application by adding the following to your `phpkg.config.json`:
+If you are developing a package or wish to separate your main application into smaller packages, you may have executable files that you want to include in your main application. For example, if you are developing a package named `rocket` containing an executable file called `launch.php`, you can include this file in your main application by adding the following to your `phpkg.config.json`:
 
 ```json
 {
@@ -107,12 +130,9 @@ You can define this file as an executable in your main application by adding the
 }
 ```
 
-This configuration will create a symlink in the root of your application named `rocket-launch` that points to the `launch.php` file inside the `vendor/rocket` directory.
+This configuration will create a symlink in the root of your application named `rocket-launch`, which points to the `launch.php` file within the `vendor/rocket` directory. It's important to note that the path to the executable file should be relative to your application's root, and the executable will inherit the dependencies and class maps of the package it belongs to.
 
-It's important to note that the path to the executable file should be relative to the root of your application,
-and that the executable will have the same dependencies and class maps as the package it belongs to.
-
-Additionally, you can also specify multiple executables in the same configuration like so:
+Furthermore, you can specify multiple executables within the same configuration, like so:
 
 ```json
 {
@@ -123,17 +143,23 @@ Additionally, you can also specify multiple executables in the same configuratio
 }
 ```
 
-This will create two executables in the root of your application,
-one named `rocket-launch` and the other named `rocket-status`,
-that point to the `launch.php` and `status.php` files respectively inside the `vendor/rocket` directory.
+This will create two executables in the root of your application, one named `rocket-launch` and the other named `rocket-status`, pointing to the `launch.php` and `status.php` files, respectively, inside the `vendor/rocket` directory.
+
+### Import File
+
+By default, `phpkg` generates a `phpkg.imports.php` file and adds the required import statements to that file, which is later imported in your entry points. However, this section allows you to customize the import file and use a path that better suits your project. For instance, if you prefer to use `vendor/autoload.php`, you can define the following configuration:
+
+```json
+{
+  "import-file": "vendor/autoload.php"
+}
+```
 
 ### Packages Directory
 
-The `packages-directory` config sets the default directory for adding and removing packages to your application,
-as well as the default package directory for building your application's packages.
-By default, `phpkg` uses the directory `Packages` for package management, but you can customize it to any directory name you prefer.
+The `packages-directory` configuration sets the default directory for adding and removing packages from your application, as well as the default package directory for building your application's packages. By default, `phpkg` uses the `Packages` directory for package management, but you can customize it to your preferred directory name.
 
-For example, if you want to use the directory vendor for package management, you can set the config as follows:
+For example, if you want to use the directory `vendor` for package management, you can configure it as follows:
 
 ```json
 {
@@ -141,24 +167,20 @@ For example, if you want to use the directory vendor for package management, you
 }
 ```
 
-With this configuration, when you add or remove a package using `phpkg`,
-it will look for or create the package in the `vendor` directory.
-Also, when you build your application, the packages will be placed in the `vendor` directory.
+With this configuration, when you add or remove a package using `phpkg`, it will seek or create the package in the `vendor` directory. Additionally, when you build your application, the packages will be placed in the `vendor` directory.
 
-It's important to note that if you change the `packages-directory` config,
-you need to make sure that the new directory is included in your project's `.gitignore` 
-or `.ignore` file to prevent unwanted files from being committed to the repository.
+It's crucial to note that if you modify the `packages-directory` configuration, you should ensure that the new directory is included in your project's `.gitignore` or `.ignore` file to prevent unintended files from being committed to the repository.
 
 > **Note**  
-> If the specified directory does not exist, phpkg will create it for you.
+> If the specified directory does not exist, `phpkg` will create it for you.
 
 ### Packages
 
-The `packages` config is used to keep track of the packages that are installed in your application.
-It is automatically populated by `phpkg` when you use the `add`, `update`, or `remove` commands.
-The config lists the package name, version, and repository URL for each package that is installed.
+The `packages` configuration is used to maintain a record of the packages installed in your application. This information is automatically populated by `phpkg` when you use the `add`, `update`, or `remove` commands. The configuration lists the package name, version, and repository URL for each installed package, ensuring that
 
-Here is an example of what the `packages` config might look like:
+`phpkg` can accurately perform tasks such as updates, removals, and building your application with the correct versions.
+
+Here is an example of what the `packages` configuration might resemble:
 
 ```json
 {
@@ -169,5 +191,4 @@ Here is an example of what the `packages` config might look like:
 }
 ```
 
-This configuration keeps track of the packages that have been added to your application,
-and their version and URL, so that phpkg can check for `updates`, `remove`, or `build` your application with the correct versions.
+This configuration maintains a record of the packages added to your application, along with their versions and repository URLs, streamlining the management of your application's dependencies.

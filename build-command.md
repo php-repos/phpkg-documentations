@@ -26,8 +26,6 @@ A copy of your application will be created in the builds/development directory.
 > Please read [configuration documentation](https://phpkg.com/documentations/customization)
 > to learn how you can customize it.
 
-
-
 You can also build your application for the production environment using the following command:
 
 ```shell

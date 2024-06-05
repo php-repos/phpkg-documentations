@@ -6,7 +6,7 @@ so you can get access to it from any path and use it as all your projects’ pac
 
 ## Requirements
 
-You need to have git installed on your machine as well as PHP version >= 8.1 
+You need to have `unzip` and `git` installed on your machine as well as PHP version >= 8.1 
 with `php-mbstring`, `php-zip`, and `php-curl` extensions installed.
 
 ## Step 1: Download
@@ -55,17 +55,3 @@ You can manually install it by following these steps:
 
 If you used the installer, a path to `phpkg` has been added to your source file (`.bashrc` or `.zshrc`). 
 You need to either, open a new terminal or source your current terminal to get access to new added path.
-
-## Step 3: Add GitHub token
-
-You need to have a GitHub access token. A GitHub token is required to read repositories.
-
-> **Note**
-> If you already have an environment variable named `GITHUB_TOKEN` with your GitHub token, then you don't need to do anything.
-
-You can generate a token by following this [link](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token).
-Then you can use the following command to add it to credentials:
-
-```shell
-phpkg credential github.com {your-github-token}
-```

@@ -8,7 +8,7 @@ It works with git repositories directly, meaning there is no need for any interm
 
 ## Requirements
 
-For installing it, you need to have git installed on your machine as well as PHP version >= 8.1
+For installing it, you need to have `unzip` and git installed on your machine as well as PHP version >= 8.1
 with `php-zip` and `php-curl` extensions installed.
 
 ## Installation
@@ -30,7 +30,7 @@ By running this command, `phpkg` will be installed on your home directory.
 
 ## Add GitHub token
 
-A GitHub token is required to read repositories. 
+A GitHub token is required to read private repositories. 
 If you already have an environment variable named `GITHUB_TOKEN` with your GitHub token, then you don't need to do anything. 
 But in case you don't have this environment variable, you need to set one using the `credential` command.
 You can generate a token by following this [link](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token). 
@@ -100,12 +100,14 @@ The default content for this file should be:
 
 ```json
 {
-    "map": [],
-    "entry-points": [],
-    "excludes": [],
-    "executables": [],
-    "packages-directory": "Packages",
-    "packages": []
+  "map": [],
+  "autoloads": [],
+  "excludes": [],
+  "entry-points": [],
+  "executables": [],
+  "import-file": "phpkg.imports.php",
+  "packages-directory": "Packages",
+  "packages": []
 }
 ```
 
@@ -118,19 +120,6 @@ The `phpkg.config-lock.json` file will be used for keeping metadata about added 
 > **Note**  
 > For more information about adding packages,
 > please check [add command documentation](https://phpkg.com/documentations/add-command).
-
-#### Migrate from composer
-
-If you have a project that uses composer, and you wish to use `phpkg` on that project, 
-you can use the migrate command to make a config file that contains required namespace from your installed packages.
-
-```shell
-phpkg migrate
-```
-
-> **Note**  
-> For more information about migrate command,
-> please check [migrate documentation](https://phpkg.com/documentations/migrate-command).
 
 #### Add your application's map
 
@@ -145,9 +134,11 @@ You need to define your map configuration inside the `phpkg.config.json` file as
     "Application": "src",
     "Tests": "tests"
   },
-  "entry-points": [],
+  "autoloads": [],
   "excludes": [],
+  "entry-points": [],
   "executables": [],
+  "import-file": "phpkg.imports.php",
   "packages-directory": "Packages",
   "packages": []
 }
@@ -225,9 +216,11 @@ Then by adding this file to the entry points config in the `phpkg.config.json` f
     "Application": "src",
     "Tests": "tests"
   },
-  "entry-points": ["public/index.php"],
+  "autoloads": [],
   "excludes": [],
+  "entry-points": ["public/index.php"],
   "executables": [],
+  "import-file": "phpkg.imports.php",
   "packages-directory": "Packages",
   "packages": {
     "https:\/\/github.com\/php-repos\/test-runner.git": "installed-version"
@@ -402,15 +395,15 @@ After running this command, you will see an output that indicated the applicatio
 > For more information about `serve`,
 > please check [serve documentation](https://phpkg.com/documentations/serve-command).
 
-## Migrate from composer
+#### Migrate from composer
 
-If you have a package or application that uses composer as the package manager,
-you can use the following command to migrate from composer:
+If you have a project that uses composer, and you wish to use `phpkg` on that project,
+you can use the `migrate` command to make a config file that contains required namespace from your installed packages.
 
 ```shell
 phpkg migrate
 ```
 
 > **Note**  
-> For more information about migration,
+> For more information about migrate command,
 > please check [migrate documentation](https://phpkg.com/documentations/migrate-command).

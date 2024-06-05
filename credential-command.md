@@ -1,6 +1,6 @@
 ## Introduction
 
-f your project needs to use external packages, `phpkg` needs to access repositories on GitHub. 
+If your project needs to use private packages, `phpkg` needs to access repositories on GitHub. 
 In order to do so, it requires an access token. 
 You can use the `credential` command to add your token.
 
@@ -16,4 +16,4 @@ and generate an access token. Then run the following command:
 phpkg credential github.com {your-github-access-token}
 ```
 
-This will allow phpkg to access the GitHub APIs and read repositories.
+This will allow phpkg to access the GitHub APIs and read private repositories.

@@ -51,6 +51,13 @@ phpkg add https://github.com/{owner}/{repo}.git --version={tag-name}
 
 In this case, it adds the same version of the package to your application.
 
+In `phpkg`, you can utilize semantic versioning to manage your package versions efficiently. For instance, the following
+command will add the specified repository at the latest available version starting with `v1`.
+
+```shell
+phpkg add https://github.com/{owner}/{repo}.git v1
+```
+
 However, sometimes you may need a development version of a package.
 In this case, you can specify `development` as the version tag, and it clones the package for your application.
 Cloning the package also happens when there is no release for the package.
@@ -91,4 +98,9 @@ The package metadata will be added to the `phpkg.config-lock.json` file:
     "owner": "php-repos",
     "repo": "test-runner"
 }
+```
+Similarly, you can add composer packages by providing their repository URL:
+
+```shell
+phpkg add https://github.com/symfony/thanks
 ```

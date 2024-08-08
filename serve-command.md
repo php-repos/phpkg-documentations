@@ -33,3 +33,22 @@ phpkg serve https://github.com/php-repos/daily-routine.git
 
 It's worth noting that the `serve` command will install the package in a temporary location, and it will be removed after restarting your OS.
 Also, it will not add the package to your `phpkg.config.json` file, so it will not be available for future use in your application.
+
+You may wish to `serve` a package on a specific version. For doing so, pass a `version` arg indicating your desired version:
+
+```shell
+phpkg serve https://github.com/owner/repo.git --version={version}
+```
+
+If you came across a need to `serve` a package on a specific commit hash, you can use the `version` argument using `development#{commit-hash}`:
+
+```shell
+phpkg serve https://github.com/php-repos/daily-routine.git --version=development#f2ffcee641009d753c72a935a083b2fc650787c1
+```
+
+While developing, you might need to `serve` another package that is already on your machine. In this case, you can use either a relative or an absolute path to the project from your current directory, rather than the package's URL:
+
+```shell
+phpkg serve ../relative/path/to/packge
+phpkg serve ./absolute/path/to/package
+```

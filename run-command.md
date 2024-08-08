@@ -34,3 +34,22 @@ phpkg run https://github.com/php-repos/weather.git
 
 It's worth noting that the `run` command will install the package in a temporary location, and it will be removed after restarting your OS.
 Also, it will not add the package to your `phpkg.config.json` file, so it will not be available for future use in your application.
+
+You may wish to `run` a package on a specific version. For doing so, pass a `version` arg indicating your desired version:
+
+```shell
+phpkg run https://github.com/owner/repo.git --version={version}
+```
+
+If you came across a need to run a package on a specific commit hash, you can use the `version` argument using `development#{commit-hash}`:
+
+```shell
+phpkg run https://github.com/php-repos/chuck-norris.git --version=development#336212f42b0d612a1397e5009f2e3c681851d770
+```
+
+While developing, you might need to `run` another package that is already on your machine. In this case, you can use either a relative or an absolute path to the project from your current directory, rather than the package's URL:
+
+```shell
+phpkg run ../relative/path/to/packge
+phpkg run ./absolute/path/to/package
+```

@@ -29,7 +29,7 @@ It also adds its source directory to your `$PATH` so you can easily start to use
 
 You need to open a new terminal to be able to use commands on `phpkg`.
 
-### Source your terminal
+### Step 2: Source your terminal
 
 When you use the installer, a path to phpkg is added to your shell configuration file (either `.bashrc` or `.zshrc`).
 To access the newly added path, you need to either open a new terminal or source your current terminal session.

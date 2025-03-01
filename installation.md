@@ -9,16 +9,14 @@ so you can get access to it from any path and use it as all your projects’ pac
 You need to have `unzip` and `git` installed on your machine as well as PHP version >= 8.1 
 with `php-mbstring`, `php-zip`, and `php-curl` extensions installed.
 
-## Step 1: Download
+## Installation
 
-First step is to download required files. You can do it automatically or manually.
-
-### Use Installer
+### Step 1: Run the installer
 
 > **Note**  
 > These installer work on Unix/Linux and macOS systems. Support for windows will be added soon.
 
-Using the installer will be the easiest method.
+Installing phpkg using the installer is very easy.
 You can simply run the following line, and you should have it ready to use:
 
 ```shell
@@ -31,27 +29,7 @@ It also adds its source directory to your `$PATH` so you can easily start to use
 
 You need to open a new terminal to be able to use commands on `phpkg`.
 
-### Manual Installation
+### Source your terminal
 
-You can manually install it by following these steps:
-
-- Download the latest version from [github](https://github.com/php-repos/phpkg/releases)
-- Unzip the downloaded file
-- Rename the unzipped directory to `.phpkg`
-- Download the latest version of `CLI` package from [github](https://github.com/php-repos/cli/releases)
-- Unzip the cli package and move its files and directories to `.phpkg/Packages/php-repos/cli`
-- Download the latest version of `Datatype` package from [github](https://github.com/php-repos/datatype/releases)
-- Unzip the datatype package and move its files and directories to `.phpkg/Packages/php-repos/datatype`
-- Download the latest version of `FileManager` package from [github](https://github.com/php-repos/file-manager/releases)
-- Unzip the file manager package and move its files and directories to `.phpkg/Packages/php-repos/file-manager`
-- Download the latest version of `ControlFlow` package from [github](https://github.com/php-repos/control-flow/releases)
-- Unzip the control flow package and move its files and directories to `.phpkg/Packages/php-repos/control-flow`
-- Make a copy from `credentials.example.json` to `credentials.json`
-- Add path to its source directory into your `$PATH`
-- Either, open a new tab or source your `.bashrc`/`.zshrc` file
-- To make sure everything is installed correctly, run `phpkg --help` and you should see the help.
-
-## Step 2: Source your terminal
-
-If you used the installer, a path to `phpkg` has been added to your source file (`.bashrc` or `.zshrc`). 
-You need to either, open a new terminal or source your current terminal to get access to new added path.
+When you use the installer, a path to phpkg is added to your shell configuration file (either `.bashrc` or `.zshrc`).
+To access the newly added path, you need to either open a new terminal or source your current terminal session.

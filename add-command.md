@@ -1,106 +1,120 @@
-## Introduction
+## Add Command
 
-You can use the `add` command to add a git repository to your application as a package. 
-This feature is useful for developers who want to use external packages or libraries in their application.
+### Bring Git Packages into Your Project
 
-As a package user, simply search online, and as soon as you reach the git repo, you can add it.
+Need a package in your `phpkg` project? The `add` command grabs any Git repo—public or private—and drops it into your setup, ready to autoload functions and classes. No central registry, no fuss—just find a repo and add it.
 
-As a package developer, there is no need to register your package in other places.
-Your package is ready to use as soon as you push it to the git.
+- **For Users**: Search GitHub, copy the URL, and go.
+- **For Devs**: Push your code to Git—it’s instantly usable, no extra steps.
 
-## Usage
+---
 
-Adding a package to your application using the `add` command is very easy.
-You only need to provide a path to your desired package, and it adds that package to your application.
+### Usage
 
-The path can be a HTTPS path or SSH path to the package.
+Add a package with its Git URL:
 
-For a HTTPS path use:
-
-```shell
-phpkg add https://github.com/{owner}/{repo}.git
+```bash
+phpkg add <package-url>
 ```
 
-For SSH path use:
+- **HTTPS**:  
+    ```bash
+    phpkg add https://github.com/owner/repo.git
+    ```
+- **SSH**:
+    ```bash
+    phpkg add git@github.com:owner/repo.git
+    ```
 
-```shell
-phpkg add git@github.com:{owner}/{repo}.git
+Replace `owner` and `repo` with the real deal—e.g., `php-repos/test-runner`.
+
+#### Use an Alias
+
+Set a shortcut with [Alias Command](https://phpkg.com/documentations/alias-command) first:
+```bash
+phpkg alias tr https://github.com/php-repos/test-runner.git
+phpkg add tr
 ```
 
-You can simply add any package to your application using this single command.
-Remember to replace `{owner}` and `{repo}` with your desired package owner and repo name.
+#### Pick a Version
 
-Alternatively, you can define an alias for a package and use the alias for adding the package.
-
-```shell
-phpkg alias package-alias git@github.com:{owner}/{repo}.git
-phpkg add package-alias
+By default, `phpkg` grabs the latest release:
+```bash
+phpkg add https://github.com/php-repos/test-runner.git
 ```
 
-> **Note**
-> For more information about the `alias` command,
-> please read [this documentation](https://phpkg.com/documentations/alias-command).
+- Want a specific tag? Add `--version`:  
+    ```bash
+    phpkg add https://github.com/php-repos/test-runner.git --version=v1.2.3
+    ```
+- Semantic versioning? Use a prefix:  
+    ```bash
+    phpkg add https://github.com/php-repos/test-runner.git v1  # Latest v1.x.x
+    ```
+- Need the dev version? Go with:  
+    ```bash
+    phpkg add https://github.com/php-repos/test-runner.git --version=development
+    ```
+    Clones the repo if no releases exist.
 
-By default, it checks the given package's repository to see if there are any releases for the package.
-If it finds releases, it downloads the latest release of the package for your application,
-unless you specify the version tag that you wish to install.
+#### GitHub Token Note
 
-```shell
-phpkg add https://github.com/{owner}/{repo}.git --version={tag-name}
+Busy project or private repo? `phpkg` needs a GitHub token to avoid rate limits or access locked code. Set `GITHUB_TOKEN` env var or use [Credential Command](https://phpkg.com/documentations/credential-command):
+
+```bash
+phpkg credential github.com <your-token>
 ```
 
-In this case, it adds the same version of the package to your application.
+---
 
-In `phpkg`, you can utilize semantic versioning to manage your package versions efficiently. For instance, the following
-command will add the specified repository at the latest available version starting with `v1`.
+#### What Happens?
 
-```shell
-phpkg add https://github.com/{owner}/{repo}.git v1
+- **Package Location**: Lands in `Packages/owner/repo` (or your custom `packages-directory`).  
+- **Config Update**: Adds to `phpkg.config.json`:  
+    ```json
+    {
+        "packages": {
+            "https://github.com/php-repos/test-runner.git": "v1.2.3"
+        }
+    }
+    ```
+- **Lock File**: Tracks metadata in `phpkg.config-lock.json`:  
+    ```json
+    {
+        "https://github.com/php-repos/test-runner.git": {
+            "version": "v1.2.3",
+            "hash": "abc123...",
+            "owner": "php-repos",
+            "repo": "test-runner"
+        }
+    }
+    ```
+- **Next**: Run `phpkg build` to autoload its functions and classes.
+
+---
+
+#### Example
+
+Add the `test-runner` package:
+```bash
+phpkg add https://github.com/php-repos/test-runner.git
 ```
 
-However, sometimes you may need a development version of a package.
-In this case, you can specify `development` as the version tag, and it clones the package for your application.
-Cloning the package also happens when there is no release for the package.
+- Installs to `Packages/php-repos/test-runner`.  
+- Updates configs with the latest release (or dev if no releases).
 
-> **Note**  
-> For reading packages, phpkg needs a token. 
-> You either, should have an environment variable named `GITHUB_TOKEN` containing a GitHub Token, 
-> or you need to add one using the `credential` command.
->
-> For more information about the `credential` command, 
-> please read [this documentation](https://phpkg.com/documentations/credential-command).
+Try a Composer package too:
 
-## Example
-
-Let's say you need to install the `test-runner` package to our application.
-The owner of this package is `php-repos` and the repo is `test-runner`.
-You only need to run:
-
-```shell
-phpkg add https://github.com/php-repos/test-runner
-```
-And it will install the package to `Packages/php-repos/test-runner` on your project directory.
-
-You will see the package in your `phpkg.config.json` file under the `packages` section:
-
-```json
-"packages": {
-    "git@github.com:php-repos\/test-runner.git": "version-number"
-}
+```bash
+phpkg add https://github.com/symfony/thanks.git
 ```
 
-The package metadata will be added to the `phpkg.config-lock.json` file:
+`phpkg` handles any Git repo—Composer or not.
 
-```json
-"git@github.com:php-repos\/test-runner.git": {
-    "version": "version-number",
-    "hash": "hash-for-installed-version",
-    "owner": "php-repos",
-    "repo": "test-runner"
-}
-```
-Similarly, you can add composer packages by providing their repository URL:
+---
 
-```shell
-phpkg add https://github.com/symfony/thanks
-```
+### Tips
+
+- **Rate Limits**: Lots of packages or releases? Add a token to keep it smooth.  
+- **Versions**: Check repo tags online—`phpkg` picks what’s there.  
+- **Next Steps**: See [Build Command](https://phpkg.com/documentations/build-command) to use your new package.

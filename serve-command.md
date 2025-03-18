@@ -1,54 +1,101 @@
-## Introduction
+## Serve Command
 
-You can use the `serve` command to serve any `phpkg` package without installing it into any project.
-Just pass the git URL for your desired package and start serving in your local.
+### Launch PHP Apps Without a Web Server
 
-> **Note**
-> The `serve` command uses [php pcntl](https://www.php.net/manual/en/book.pcntl.php) extension, which is not supported on Windows operating systems.
+Why limit PHP to websites? The `phpkg serve` command lets you run any `phpkg`-compatible package as a standalone web app, straight from a Git URL or local path—no project install, no domain, no hassle. It spins up a local server using PHP’s built-in `php -S`, delivering your app’s entry point right to your browser.
 
-> **Note**
-> The package that you want to serve must have at least one entry point defined in its config file.
+- **Game-Changer**: Build and share web-ready tools or dashboards, no server setup needed.
+- **Vision**: Expands PHP into a versatile app platform—think beyond the web.
 
-## Usage
+*Requirements*: Needs the [PCNTL extension](https://www.php.net/manual/en/book.pcntl.php)—Unix/Linux/macOS only (no Windows yet).
 
-You need to pass the package's git URL to the `serve` command. This command works with both, HTTPS and SSH git URL.
+---
 
-The `serve` command downloads, installs, builds, and serves the first entry point using `php -S` command.
+### Usage
 
-```shell
-phpkg serve https://github.com/{OWNER}/{REPO}.git [entry-point]
+Pass a Git URL or local path to `phpkg serve`:
+
+#### From a Git URL
+
+```bash
+phpkg serve <package-url> [entry-point]
 ```
 
-> **Note**
-> If the given package has more than one entry point defined in its `phpkg.config.json` file, 
-> then you need to pass a second argument to specify which entry point you need to run.
-> Otherwise, it uses the first entry point defined in the config file.
-> See [customization documents](https://phpkg.com/documentations/customization)
+- **HTTPS**:  
+    ```bash
+    phpkg serve https://github.com/owner/repo.git
+    ```
+- **SSH**:  
+    ```bash
+    phpkg serve git@github.com:owner/repo.git
+    ```
+  
+#### Pick an Entry Point
 
-As an example, you can serve the `Daily Routine` package that shows a simple dashboard with various information to start your day, by running the following command:
+Multiple entry points in `phpkg.config.json`? Choose one:  
+```bash
+phpkg serve https://github.com/php-repos/daily-routine.git dashboard.php
+```
 
-```shell
+- **Default**: Serves the first entry point listed.  
+- **Must-Have**: Package needs at least one entry point—see [Customization](https://phpkg.com/documentations/customization).
+
+#### Set a Version
+
+- Latest release by default. For a specific version:  
+
+    ```bash
+    phpkg serve https://github.com/php-repos/daily-routine.git --version=v1.0.0
+    ```
+- Dev version with a commit:  
+    ```bash
+    phpkg serve https://github.com/php-repos/daily-routine.git --version=development#f2ffcee641009d753c72a935a083b2fc650787c1
+    ```
+
+#### From a Local Path
+
+Serve a package on your machine:  
+
+```bash
+phpkg serve ../relative/path/to/package
+phpkg serve /absolute/path/to/package
+```
+
+- Ideal for dev testing.
+
+_How It Works_: Downloads (or uses local), builds in a temp sandbox, and serves via `php -S` (e.g., `localhost:8000`). Cleanup happens on OS restart—no project changes.
+
+---
+
+### Why It Matters
+
+PHP can do more than web pages—and `serve` proves it:
+
+- **Instant Apps**: Launch dashboards or tools (e.g., `daily-routine`) without Apache or Nginx.  
+- **No Overhead**: Skip project dependencies—run standalone, anywhere.  
+- **Creative Freedom**: Build web-accessible PHP apps for yourself or others, no domain required.
+
+Unlike Composer’s web-only focus, `phpkg serve` turns PHP into a universal app runner.
+
+---
+
+### Example
+
+Serve the `daily-routine` package—a dashboard for your day:  
+
+```bash
 phpkg serve https://github.com/php-repos/daily-routine.git
 ```
 
-It's worth noting that the `serve` command will install the package in a temporary location, and it will be removed after restarting your OS.
-Also, it will not add the package to your `phpkg.config.json` file, so it will not be available for future use in your application.
+- Output: Open `http://localhost:8000` to see tasks, crypto prices, news, and weather.
+- No Setup: Just one command, no server config.
 
-You may wish to `serve` a package on a specific version. For doing so, pass a `version` arg indicating your desired version:
+---
 
-```shell
-phpkg serve https://github.com/owner/repo.git --version={version}
-```
+### Tips
 
-If you came across a need to `serve` a package on a specific commit hash, you can use the `version` argument using `development#{commit-hash}`:
-
-```shell
-phpkg serve https://github.com/php-repos/daily-routine.git --version=development#f2ffcee641009d753c72a935a083b2fc650787c1
-```
-
-While developing, you might need to `serve` another package that is already on your machine. In this case, you can use either a relative or an absolute path to the project from your current directory, rather than the package's URL:
-
-```shell
-phpkg serve ../relative/path/to/packge
-phpkg serve ./absolute/path/to/package
-```
+- **Access**: Visit `localhost:8000` (or the port shown) in your browser.  
+- **Tokens**: GitHub rate limits? Add a token via [Credential Command](https://phpkg.com/documentations/credential-command).  
+- **Entry Points**: Check `phpkg.config.json` for options—see [Customization](https://phpkg.com/documentations/customization).  
+- **Keep It**: Want it permanent? Use **phpkg add** instead.  
+- **Pair It**: Use **phpkg run** for CLI output—see [Run Command](https://phpkg.com/documentations/run-command).

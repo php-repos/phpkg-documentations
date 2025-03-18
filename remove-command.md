@@ -1,48 +1,64 @@
-## Introduction
+## Remove Command
 
-It is a common use case that you sometimes need to remove an added package from your application.
-The `remove` command allows you to easily remove a package from your application.
+### Drop Packages with Ease
 
-## Usage
+Need to ditch a package from your `phpkg` project? The `remove` command makes it simple to strip out any added package—whether by URL or alias—cleaning up your `packages-directory`, `phpkg.config.json`, and `phpkg.config-lock.json` in one go.
 
-The `remove` command takes the package's name or URL as an argument. 
-You can pass the ssh or https URL of the package to the `remove` command.
+- **Why Use It?**: Keep your project lean and free of unused dependencies.
+- **How It Works**: Targets the package and wipes its traces from your setup.
 
-```shell
-// Remove using a https URL
-phpkg remove https://github.com/{owner}/{repo}
-// Remove using a ssh URL
-phpkg remove git@github.com:{owner}/{repo}.git
+---
+
+### Usage
+
+Pass the package’s Git URL or an alias to `phpkg remove`:
+
+#### By URL
+- **HTTPS**:
+  ```bash
+  phpkg remove https://github.com/owner/repo.git
+  ```
+- **SSH**:  
+    ```bash
+    phpkg remove git@github.com:owner/repo.git
+    ```
+#### By Alias
+
+Set an alias first with [Alias Command](https://phpkg.com/documentations/alias-command), then remove it:
+
+```bash
+phpkg alias tr https://github.com/php-repos/test-runner.git
+phpkg remove tr
 ```
 
-Alternatively, you can define an alias for a specific package using the `alias` command and then use the defined alias for removing the package.
+- **What Happens**: Deletes the package from your `packages-directory` (e.g., `Packages/`), removes it from `phpkg.config.json`’s `"packages"`, and clears its metadata from `phpkg.config-lock.json`.  
+- _Tip_: Not sure of the URL? Check `"packages"` in `phpkg.config.json`.
 
-```shell
-phpkg alias package-alias git@github.com:{owner}/{repo}.git
-phpkg remove package-alias
+---
+
+#### Example
+
+Say you added `test-runner` from `php-repos/test-runner`. To remove it:
+
+##### Using the URL
+
+```bash
+phpkg remove https://github.com/php-repos/test-runner.git
 ```
 
-> **Note**
-> For more information about the `alias` command,
-> please read [this documentation](https://phpkg.com/documentations/alias-command).
- 
-When you run the `remove` command, the given package will be removed from your package's directory, `phpkg.config.json` file, and `phpkg.config-lock.json` file.
+##### Using an Alias
 
-> **Note**  
-> If you are not sure what path you used to add the package, you can always check the packages section in your `phpkg.config.json` file to see the path.
-
-## Examples
-
-Let's assume we added the `test-runner` package from `php-repos/test-runner`. 
-To remove the package from your application, you can run the following command:
-
-```shell
-phpkg remove https://github.com/php-repos/test-runner
-```
-
-Using an alias for the package can make it easier:
-
-```shell
-phpkg alias test-runner https://github.com/php-repos/test-runner
+```bash
+phpkg alias test-runner https://github.com/php-repos/test-runner.git
 phpkg remove test-runner
 ```
+
+- Result: `Packages/php-repos/test-runner/` is gone, and your config files are updated.
+
+---
+
+### Tips
+
+- **Verify Removal**: Peek at `Packages/` or `phpkg.config.json`—the package should be history.  
+- **Next Step**: Run `phpkg build` to refresh your project without the removed package.  
+- **Learn More**: See [Add Command](https://phpkg.com/documentations/add-command) for adding packages or [Alias Command](https://phpkg.com/documentations/alias-command) for shortcuts.

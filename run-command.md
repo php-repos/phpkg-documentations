@@ -1,55 +1,114 @@
-## Introduction
+## Run Command
 
-You can use the `run` command to run any `phpkg` package without installing it into any project.
-Just pass the git URL for your desired package and see the output on the console.
+### Unleash PHP Tools Anywhere
 
-## Usage
+Imagine running a PHP tool—like a static analyzer or a weather checker—without embedding it in a project or fussing with dependencies. The `phpkg run` command makes this real: it grabs any `phpkg`-compatible Git repository, builds it on the fly, and executes it right in your terminal. No installs, no web servers—just pure PHP power at your fingertips.
 
-You need to pass the package's git URL to the `run` command. This command works with both, HTTPS and SSH git URL.
+- **Why It’s Revolutionary**: Turns PHP into a tool-runner, not just a web engine.
+- **Big Idea**: Stop bloating projects with dev tools—run them standalone, once per machine.
 
-The `run` command downloads, installs, builds, and runs the given package's entry point.
+---
 
-```shell
-phpkg run https://github.com/{OWNER}/{REPO}.git [entry-point]
+### Usage
+
+Pass a Git URL or local path to `phpkg run`:
+
+#### From a Git URL
+
+```bash
+phpkg run <package-url> [entry-point]
 ```
 
-> **Note**
-> If the given package has more than one entry point defined in its `phpkg.config.json` file, 
-> then you need to pass a second argument to specify which entry point you need to run.
-> Otherwise, it uses the first entry point defined in the config file.
-> See [customization documents](https://phpkg.com/documentations/customization)
+- **HTTPS**:  
+    ```bash
+    phpkg run https://github.com/owner/repo.git
+    ```
+- **SSH**:  
 
-As an example, you can run the `Chuck Norris` package that sends a request to the https://api.chucknorris.io/ and shows the
-result on the output by running the following command:
+    ```bash
+    phpkg run git@github.com:owner/repo.git
+    ```
 
-```shell
-phpkg run https://github.com/php-repos/chuck-norris.git
+#### Pick an Entry Point
+
+Multiple entry points in `phpkg.config.json`? Specify one:  
+
+```bash
+phpkg run https://github.com/php-repos/chuck-norris.git jokes.php
 ```
 
-You can also see your location's weather forecast in your terminal by running the following command:
+- Default: Runs the first entry point listed.
 
-```shell
-phpkg run https://github.com/php-repos/weather.git
+#### Set a Version
+
+- Latest release by default. For a specific version:  
+
+    ```bash
+    phpkg run https://github.com/php-repos/weather.git --version=v1.2.3
+    ```
+
+- Dev version with a commit:  
+    ```bash
+    phpkg run https://github.com/php-repos/chuck-norris.git --version=development#336212f42b0d612a1397e5009f2e3c681851d770
+    ```
+
+#### From a Local Path
+
+Test a package on your machine:  
+```bash
+phpkg run ../relative/path/to/package
+phpkg run /absolute/path/to/package
 ```
 
-It's worth noting that the `run` command will install the package in a temporary location, and it will be removed after restarting your OS.
-Also, it will not add the package to your `phpkg.config.json` file, so it will not be available for future use in your application.
+**How It Works**: Downloads (or uses local), builds in a temp sandbox, runs the entry point, and cleans up on reboot—no project changes.
 
-You may wish to `run` a package on a specific version. For doing so, pass a `version` arg indicating your desired version:
+---
 
-```shell
-phpkg run https://github.com/owner/repo.git --version={version}
-```
+### Why It Matters
 
-If you came across a need to run a package on a specific commit hash, you can use the `version` argument using `development#{commit-hash}`:
+PHP isn’t just for websites—it’s for tools. The `run` command breaks the mold:
 
-```shell
-phpkg run https://github.com/php-repos/chuck-norris.git --version=development#336212f42b0d612a1397e5009f2e3c681851d770
-```
+- `Standalone Power`: Run analyzers (e.g., PHPStan) or utilities without project bloat.  
+    ```bash
+    phpkg run https://github.com/phpstan/phpstan.git phpstan analyze /path/to/project
+    ```
+- `Real Apps`: Build CLI tools—like a daily dashboard—usable anywhere.  
+    ```bash
+    phpkg run https://github.com/php-repos/daily-routine.git
+    ```
+- `Efficiency`: Install once globally, not per project—less waste, faster setups.
 
-While developing, you might need to `run` another package that is already on your machine. In this case, you can use either a relative or an absolute path to the project from your current directory, rather than the package's URL:
+Unlike Composer, which ties tools to `vendor/`, `phpkg run` frees them to stand alone, slashing redundancy and complexity.
 
-```shell
-phpkg run ../relative/path/to/packge
-phpkg run ./absolute/path/to/package
-```
+### Examples
+
+- Chuck Norris Jokes:
+
+    ```bash
+    phpkg run https://github.com/php-repos/chuck-norris.git
+    ```
+
+    Output: A Chuck Norris quip from https://api.chucknorris.io/.
+
+- Weather Check:  
+
+    ```bash
+    phpkg run https://github.com/php-repos/weather.git
+    ```
+    Output: Your local forecast in the terminal.
+
+- Static Analysis:  
+    ```bash
+    phpkg run https://github.com/phpstan/phpstan.git phpstan analyze ./my-app
+    ```
+    Output: Code analysis, no install needed.
+---
+
+### Tips
+
+- **Tokens**: GitHub rate limits? Add a token via [Credential Command](https://phpkg.com/documentations/credential-command).  
+- **Entry** Points: See a package’s `phpkg.config.json` for options—check [Customization](https://phpkg.com/documentations/customization).  
+- **Keep It**: Want it permanent? Use `phpkg add` instead.  
+- **Dream Big**: Create your own CLI tools—PHP’s limits are yours to break.
+
+_Companion_: Pair with phpkg serve for web-ready apps—see [Serve Command](https://phpkg.com/documentations/serve-command).

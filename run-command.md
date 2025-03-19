@@ -68,15 +68,15 @@ phpkg run /absolute/path/to/package
 
 PHP isn’t just for websites—it’s for tools. The `run` command breaks the mold:
 
-- `Standalone Power`: Run analyzers (e.g., PHPStan) or utilities without project bloat.  
+- **Standalone Power**: Run analyzers (e.g., PHPStan) or utilities without project bloat.  
     ```bash
     phpkg run https://github.com/phpstan/phpstan.git phpstan analyze /path/to/project
     ```
-- `Real Apps`: Build CLI tools—like a daily dashboard—usable anywhere.  
+- **Real Apps**: Build CLI tools—like a daily dashboard—usable anywhere.  
     ```bash
     phpkg run https://github.com/php-repos/daily-routine.git
     ```
-- `Efficiency`: Install once globally, not per project—less waste, faster setups.
+- **Efficiency**: Install once globally, not per project—less waste, faster setups.
 
 Unlike Composer, which ties tools to `vendor/`, `phpkg run` frees them to stand alone, slashing redundancy and complexity.
 
@@ -111,4 +111,4 @@ Unlike Composer, which ties tools to `vendor/`, `phpkg run` frees them to stand 
 - **Keep It**: Want it permanent? Use `phpkg add` instead.  
 - **Dream Big**: Create your own CLI tools—PHP’s limits are yours to break.
 
-_Companion_: Pair with phpkg serve for web-ready apps—see [Serve Command](https://phpkg.com/documentations/serve-command).
+_Companion_: Pair with `phpkg serve` for web-ready apps—see [Serve Command](https://phpkg.com/documentations/serve-command).

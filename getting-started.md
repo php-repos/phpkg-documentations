@@ -46,7 +46,7 @@ Set Up Your Project
     mkdir my-app && cd my-app
     phpkg init
     ```
-    - Adds Packages/` for dependencies, phpkg.config.json` for settings, and `phpkg.config-lock.json` for metadata.
+    - Adds `Packages/` for dependencies, `phpkg.config.json` for settings, and `phpkg.config-lock.json` for metadata.
 
 2. **Configure**: Map your namespaces in `phpkg.config.json`:
     ```json

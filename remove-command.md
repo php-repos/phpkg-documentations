@@ -22,6 +22,7 @@ Pass the package’s Git URL or an alias to `phpkg remove`:
     ```bash
     phpkg remove git@github.com:owner/repo.git
     ```
+
 #### By Alias
 
 Set an alias first with [Alias Command](https://phpkg.com/documentations/alias-command), then remove it:

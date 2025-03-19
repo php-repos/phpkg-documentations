@@ -1,28 +1,43 @@
-## Introduction
+## Init Command
 
-Before you can start using phpkg to manage your application's dependencies, you'll need to do some initial setup.
-The `init` command can help you do this quickly and easily.
+### Kickstart Your phpkg Project
+Ready to manage dependencies with `phpkg`? The `init` command sets up your project in seconds, creating the foundation for autoloading functions and classes from Git repos—no Composer clutter needed.
 
-## Usage
+---
 
-To initialize your application for use with `phpkg`, simply run the following command in your project's root directory:
-
-```shell
+### Usage
+Run this in your project’s root directory:
+```bash
 phpkg init
 ```
 
-This command will create the following files and directories:
+- **What It Does**:
+    - Creates `phpkg.config.json`: Configures your namespace mappings and settings.
+    - Creates `phpkg.config-lock.json`: Tracks your added packages’ versions and metadata.
+    - Adds a `Packages/` directory: Stores source code for packages you install.
 
-- A `phpkg.config.json` file, which contains the configuration settings for your application.
-- A `phpkg.config-lock.json` file, which is used to keep track of the packages that have been added to your application.
-- A directory for storing the source code of packages that you add to your application. By default, this directory is named `Packages`.
-
-If you prefer to use a different directory name for storing added packages, you can specify it when you run the init command. 
-For example:
+Want a custom packages directory? Use:
 
 ```shell
 phpkg init --packages-directory=vendor
 ```
 
-Once your application has been initialized, you can start customizing your `phpkg.config.json` file to suit your needs.
-For more information on how to do this, see the [customization documents](https://phpkg.com/documentations/customization).
+- Renames `Packages/` to `vendor/` (or any name you pick).
+
+---
+
+### Next Steps
+
+After running `init`, tweak `phpkg.config.json` to map your code (e.g., `App` → `src/`). Example:
+
+```json
+{
+    "map": {"App": "src"},
+    "entry-points": ["public/index.php"],
+    "packages": []
+}
+```
+
+Then, add packages with `phpkg add` and build with `phpkg build`. See [Customization](https://phpkg.com/documentations/customization) for details.
+
+_One command, and you’re ready to autoload your way to cleaner PHP code._

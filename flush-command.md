@@ -1,22 +1,40 @@
-## Introduction
+## Flush Command
 
-The `flush` command is used to remove all the files and directories that were created during the build process.
-This command can be useful when you want to start a fresh build or when you want to clear any unnecessary files 
-that may have been created during the build process.
+### Wipe the Slate Clean
 
-## Usage
+Need a fresh start? The `phpkg flush` command clears out all files and directories created during the build process—think of it as a reset button for your `builds/` directory. Whether you’re troubleshooting, cleaning up clutter, or prepping for a new build, `flush` gets you back to square one fast.
 
-To use the `flush` command, navigate to the root directory of your application and run the following command:
+---
 
-```shell
+### Usage
+
+From your project’s root directory, run:
+
+```bash
 phpkg flush
 ```
 
-This command will remove all the files and directories that were created in the "environment build" directory inside the `builds` directory.
+- **What It Does**: Deletes everything in `builds/`—all environment directories like `development/` and `production/`.  
+- **After**: Your `builds/` directory is empty, ready for a fresh `phpkg build`.
 
-> **Note**  
-> Be careful when using this command, as it will delete all the files and directories that were created by the build command.
-> Make sure to backup any necessary files before running this command.
+> Caution: This wipes all built files—back up anything you need before running it!
 
-After running this command, you can check the "environment build" directory to confirm that it is empty.
-You can then run the `build` command again to start a fresh build of your application.
+### Why Use It?
+
+- **Fresh Builds**: Start over without leftover artifacts messing up your next `phpkg build`.  
+- **Troubleshooting**: Clear corrupted or outdated builds to debug issues.  
+- **Clean Slate**: Free up space by ditching unused environment dirs.
+
+Check `builds/` after running—it should be empty. Then, rebuild with:
+
+```bash
+phpkg build  # or phpkg build production
+```
+
+---
+
+### Tips
+
+- **Backup First**: Save custom files in `builds/` (if any) before flushing—they’ll be gone.  
+- **Pair with Build**: Use `flush` then `build` for a clean, reliable setup.  
+- **See the Process**: Want details on builds? Check [Build Command](https://phpkg.com/documentations/build-command).

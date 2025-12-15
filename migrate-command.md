@@ -1,6 +1,6 @@
-## Migrate Command
+# Migrate Command
 
-### Switch from Composer with Ease
+## Switch from Composer with Ease
 
 If your application or package currently relies on Composer, the `phpkg migrate` command simplifies the shift to `phpkg`. It scans your `composer.json`, generates a `phpkg.config.json` with the key details, and prepares your project to leverage `phpkg`’s powerful autoloading—no tedious manual configuration required.
 
@@ -9,7 +9,7 @@ If your application or package currently relies on Composer, the `phpkg migrate`
 
 ---
 
-### Usage
+## Usage
 
 In the root directory of your package or application, run:
 
@@ -26,7 +26,7 @@ phpkg migrate
 
 ---
 
-### Why Use It?
+## Why Use It?
 
 - **Quick Transition**: Avoid manual setup—`migrate` does the heavy lifting.  
 - **Enhanced Flexibility**: Use namespaced functions alongside classes.  
@@ -36,7 +36,7 @@ After migration, you can tweak `phpkg.config.json` as needed—see [Customizatio
 
 ---
 
-### Example
+## Examples
 
 Imagine your `composer.json` looks like this:
 
@@ -72,8 +72,26 @@ Then, run `phpkg build` to get your project up and running.
 
 ---
 
-### Tips
+## Tips
 
 - **Check the Config**: Review `phpkg.config.json` post-migration to adjust settings or add entry points.  
 - **Install Packages**: Use `phpkg add` to fetch packages from Git after migration.  
 - **Learn More**: Visit [Build Command](https://phpkg.com/documentations/build-command) for the next steps.
+
+---
+
+## Related Commands
+
+- **[Init Command](https://phpkg.com/documentations/init-command)** - Initialize a new phpkg project from scratch
+- **[Build Command](https://phpkg.com/documentations/build-command)** - Build your project after migration
+- **[Add Command](https://phpkg.com/documentations/add-command)** - Add packages after migration
+- **[Install Command](https://phpkg.com/documentations/install-command)** - Install packages from config
+- **[Customization](https://phpkg.com/documentations/customization)** - Configure your migrated project
+- **[Command Comparison](https://phpkg.com/documentations/command-comparison)** - When to use which command
+
+## What's Next?
+
+- **[Getting Started](https://phpkg.com/documentations/getting-started)** - Learn the basics of phpkg
+- **[Concepts](https://phpkg.com/documentations/concepts)** - Understand how phpkg works under the hood
+- **[Best Practices](https://phpkg.com/documentations/best-practices)** - Recommended workflows and patterns
+- **[FAQ](https://phpkg.com/documentations/faq)** - Frequently asked questions about migration

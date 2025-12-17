@@ -4,8 +4,6 @@
 
 **phpkg** is a modern PHP package manager that brings Git-based dependency management to PHP with function-first autoloading. We've brought back all PHP functionalities for you so you can write code however you want.
 
-[Get Started →](https://phpkg.com/documentations/getting-started) [View All Documentation →](#documentation-index)
-
 ---
 
 ## phpkg is more than a package manager

@@ -1,12 +1,12 @@
-## Customization
+# Customization
 
-### Shape Your phpkg Project
+## Shape Your phpkg Project
 
 The `phpkg init` command creates a `phpkg.config.json` file—your key to tailoring `phpkg` for your project. From mapping namespaces to autoloading functions or setting entry points, this file lets you control how `phpkg` builds and runs your code. Here’s how to make it yours.
 
 ---
 
-### What’s in the Config?
+## What's in the Config?
 
 Run `phpkg init`, and you’ll get a `phpkg.config.json` like this:
 
@@ -25,7 +25,7 @@ Run `phpkg init`, and you’ll get a `phpkg.config.json` like this:
 
 Let’s break down each part.
 
-#### Map
+### Map
 
 Map namespaces to directories—like `App` to `src/`—so `phpkg` knows where your code lives. Example:
 
@@ -61,7 +61,7 @@ function log($msg) { echo $msg; }
 
 _Why it rocks: `phpkg` autoloads both, letting you mix OOP and functional code effortlessly._
 
-#### Autoloads
+### Autoloads
 
 List files to load before anything else—perfect for helpers or constants. Example:
 
@@ -78,7 +78,7 @@ List files to load before anything else—perfect for helpers or constants. Exam
     function debug($var) { var_dump($var); }
     ```
 
-#### Excludes
+### Excludes
 
 Skip files or dirs during builds—like `node_modules` or dev scripts. Example:
 
@@ -91,7 +91,7 @@ Skip files or dirs during builds—like `node_modules` or dev scripts. Example:
 - Paths are relative to your project root.  
 - Keeps your builds lean by ignoring runtime-irrelevant stuff.
 
-#### Entry Points
+### Entry Points
 
 Define where your app starts—`phpkg` adds autoloading magic here. Example:
 
@@ -104,7 +104,7 @@ Define where your app starts—`phpkg` adds autoloading magic here. Example:
 - List all entry files (e.g., web or CLI).  
 - `phpkg` injects imports so `App\Utils\log()` just works.
 
-#### Executables
+### Executables
 
 Turn package scripts into root-level commands via symlinks. Example:
 
@@ -120,7 +120,7 @@ Turn package scripts into root-level commands via symlinks. Example:
 - Add more: `"status": "Packages/rocket/status.php"`.  
 - Paths are relative to root; scripts inherit their package’s autoloads.
 
-#### Import File
+### Import File
 
 Set where `phpkg` writes import statements (default: `phpkg.imports.php`). Change it with:
 
@@ -132,7 +132,7 @@ Set where `phpkg` writes import statements (default: `phpkg.imports.php`). Chang
 
 - Matches your project’s style—e.g., mimic Composer if you like.
 
-#### Packages Directory
+### Packages Directory
 
 Choose where packages live (default: `Packages`). Customize it:
 
@@ -146,14 +146,14 @@ Choose where packages live (default: `Packages`). Customize it:
 - Add it to `.gitignore` to keep Git clean.
 > Note: If it doesn’t exist, `phpkg` creates it.
 
-#### Packages
+### Packages
 
 Tracks installed packages—`phpkg` fills this automatically with `add`, `update`, or `remove`. Example:
 
 ```json
 {
     "packages": {
-        "https://github.com/php-repos/test-runner.git": "1.0.0",
+        "https://github.com/php-repos/observer.git": "1.0.0",
         "https://github.com/php-repos/datatype.git": "2.5.0"
     }
 }
@@ -163,6 +163,23 @@ Lists Git URLs and versions—no manual edits needed.
 
 ---
 
-### Get Started
+## Get Started
 
-Edit `phpkg.config.json` after `phpkg init`, then use `phpkg build` to see it in action. Need more? Check [Init Command](https://phpkg.com/documentations/init-command) or dive into other commands like `phpkg add`.
+Edit `phpkg.config.json` after `phpkg init`, then use `phpkg build` to see it in action.
+
+---
+
+## Related Commands
+
+- **[Init Command](https://phpkg.com/documentations/init-command)** - Initialize a new phpkg project
+- **[Build Command](https://phpkg.com/documentations/build-command)** - Build your project with custom settings
+- **[Add Command](https://phpkg.com/documentations/add-command)** - Add packages to your project
+- **[Watch Command](https://phpkg.com/documentations/watch-command)** - Auto-rebuild with custom settings
+- **[Command Comparison](https://phpkg.com/documentations/command-comparison)** - When to use which command
+
+## What's Next?
+
+- **[Getting Started](https://phpkg.com/documentations/getting-started)** - Learn the basics of phpkg
+- **[Concepts](https://phpkg.com/documentations/concepts)** - Understand how phpkg works under the hood
+- **[Best Practices](https://phpkg.com/documentations/best-practices)** - Recommended configuration patterns
+- **[Troubleshooting](https://phpkg.com/documentations/troubleshooting)** - Solve configuration issues
